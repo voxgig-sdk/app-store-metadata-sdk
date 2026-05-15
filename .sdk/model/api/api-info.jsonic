@@ -1,0 +1,23 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        url: "https://app-store-metadata-api.kula.app"
+      }
+      description: "The App Store Metadata API provides reliable access to real-time metadata about iOS apps, including app details, ratings, and reviews. It eliminates the need for scraping by delivering stable endpoints for quick integration into applications and services."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://app-store-metadata-api.kula.app"
+        }
+      ]
+      title: "App Store Metadata API"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

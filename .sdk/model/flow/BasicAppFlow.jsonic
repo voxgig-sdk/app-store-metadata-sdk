@@ -1,0 +1,32 @@
+# BasicAppFlow
+
+main: kit: flow: BasicAppFlow:
+{
+  entity: "app",
+  kind: "basic",
+  name: "BasicAppFlow",
+  step: [
+    {
+      input: {
+        ref: "app_ref01",
+        srcdatavar: "app_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "app01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-app_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAppFlow"
+}

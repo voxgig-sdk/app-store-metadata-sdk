@@ -1,0 +1,74 @@
+{
+  "existing": {
+    "app": {
+      "APP00": {
+        "app_id": "APP01",
+        "app_name": "s8d",
+        "bundle_id": "BUNDLE01",
+        "category": "s8f",
+        "currency": "s90",
+        "description": "s91",
+        "developer": "s92",
+        "icon_url": "s93",
+        "price": 148,
+        "rating": {},
+        "release_date": "s96",
+        "review": [],
+        "screenshot": [],
+        "version": "s99"
+      },
+      "APP01": {
+        "app_id": "APP01",
+        "app_name": "s119",
+        "bundle_id": "BUNDLE01",
+        "category": "s11b",
+        "currency": "s11c",
+        "description": "s11d",
+        "developer": "s11e",
+        "icon_url": "s11f",
+        "price": 288,
+        "rating": {},
+        "release_date": "s122",
+        "review": [],
+        "screenshot": [],
+        "version": "s125"
+      },
+      "APP02": {
+        "app_id": "APP01",
+        "app_name": "s1a5",
+        "bundle_id": "BUNDLE01",
+        "category": "s1a7",
+        "currency": "s1a8",
+        "description": "s1a9",
+        "developer": "s1aa",
+        "icon_url": "s1ab",
+        "price": 428,
+        "rating": {},
+        "release_date": "s1ae",
+        "review": [],
+        "screenshot": [],
+        "version": "s1b1"
+      }
+    }
+  },
+  "new": {
+    "app": {
+      "app_ref01": {
+        "app_id": "APP01",
+        "app_name": "s231",
+        "bundle_id": "BUNDLE01",
+        "category": "s233",
+        "currency": "s234",
+        "description": "s235",
+        "developer": "s236",
+        "icon_url": "s237",
+        "price": 568,
+        "rating": {},
+        "release_date": "s23a",
+        "review": [],
+        "screenshot": [],
+        "version": "s23d"
+      }
+    }
+  }
+}

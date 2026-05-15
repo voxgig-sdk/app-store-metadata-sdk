@@ -1,0 +1,283 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "App Store Metadata API",
+    "description": "The App Store Metadata API provides reliable access to real-time metadata about iOS apps, including app details, ratings, and reviews. It eliminates the need for scraping by delivering stable endpoints for quick integration into applications and services.",
+    "version": "1.0.0",
+    "contact": {
+      "url": "https://app-store-metadata-api.kula.app"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://app-store-metadata-api.kula.app",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/api/app/{appId}": {
+      "get": {
+        "summary": "Get App Metadata",
+        "description": "Retrieves comprehensive metadata for an iOS app including details, ratings, and reviews from the App Store",
+        "operationId": "getAppMetadata",
+        "tags": [
+          "Apps"
+        ],
+        "parameters": [
+          {
+            "name": "appId",
+            "in": "path",
+            "description": "The unique App Store ID of the iOS application",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "284882215"
+          },
+          {
+            "name": "country",
+            "in": "query",
+            "description": "Two-letter country code for App Store region (ISO 3166-1 alpha-2)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "us"
+            },
+            "example": "us"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with app metadata",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "appId": {
+                      "type": "string",
+                      "description": "Unique App Store identifier"
+                    },
+                    "appName": {
+                      "type": "string",
+                      "description": "Name of the application"
+                    },
+                    "developer": {
+                      "type": "string",
+                      "description": "Developer or publisher name"
+                    },
+                    "description": {
+                      "type": "string",
+                      "description": "Full app description"
+                    },
+                    "category": {
+                      "type": "string",
+                      "description": "Primary app category"
+                    },
+                    "price": {
+                      "type": "number",
+                      "description": "App price in local currency"
+                    },
+                    "currency": {
+                      "type": "string",
+                      "description": "Currency code"
+                    },
+                    "rating": {
+                      "type": "object",
+                      "properties": {
+                        "average": {
+                          "type": "number",
+                          "format": "float",
+                          "description": "Average user rating"
+                        },
+                        "count": {
+                          "type": "integer",
+                          "description": "Total number of ratings"
+                        }
+                      }
+                    },
+                    "version": {
+                      "type": "string",
+                      "description": "Current version number"
+                    },
+                    "releaseDate": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "Release date of current version"
+                    },
+                    "bundleId": {
+                      "type": "string",
+                      "description": "App bundle identifier"
+                    },
+                    "iconUrl": {
+                      "type": "string",
+                      "format": "uri",
+                      "description": "URL to app icon image"
+                    },
+                    "screenshots": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "format": "uri"
+                      },
+                      "description": "Array of screenshot URLs"
+                    },
+                    "reviews": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "description": "Review identifier"
+                          },
+                          "author": {
+                            "type": "string",
+                            "description": "Review author username"
+                          },
+                          "rating": {
+                            "type": "integer",
+                            "minimum": 1,
+                            "maximum": 5,
+                            "description": "Star rating (1-5)"
+                          },
+                          "title": {
+                            "type": "string",
+                            "description": "Review title"
+                          },
+                          "content": {
+                            "type": "string",
+                            "description": "Review text content"
+                          },
+                          "date": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "Review submission date"
+                          }
+                        }
+                      },
+                      "description": "Recent user reviews"
+                    }
+                  }
+                },
+                "example": {
+                  "appId": "284882215",
+                  "appName": "Facebook",
+                  "developer": "Meta Platforms, Inc.",
+                  "description": "Connect with friends and the world around you on Facebook.",
+                  "category": "Social Networking",
+                  "price": 0,
+                  "currency": "USD",
+                  "rating": {
+                    "average": 4.2,
+                    "count": 5234567
+                  },
+                  "version": "442.0",
+                  "releaseDate": "2024-01-15T00:00:00Z",
+                  "bundleId": "com.facebook.Facebook",
+                  "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/b5/d1/99/b5d19970-example.png",
+                  "screenshots": [
+                    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource126/v4/example1.png",
+                    "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource126/v4/example2.png"
+                  ],
+                  "reviews": [
+                    {
+                      "id": "12345",
+                      "author": "AppUser123",
+                      "rating": 5,
+                      "title": "Great app!",
+                      "content": "Love the new features and improvements.",
+                      "date": "2024-01-10T14:30:00Z"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - Invalid app ID format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Invalid app ID format"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "App not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "App not found in the specified App Store region"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too many requests - Rate limit exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Rate limit exceeded. Please try again later."
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "An internal error occurred while processing your request"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Apps",
+      "description": "Endpoints for retrieving iOS app metadata from the App Store"
+    }
+  ]
+}

@@ -1,0 +1,137 @@
+# Entity: app
+
+main: kit: entity: app: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "app_id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "app_name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "bundle_id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "category"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "currency"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "description"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "developer"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "icon_url"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "price"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "rating"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "release_date"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "review"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "screenshot"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "version"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "app"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: "284882215"
+                kind: "param"
+                name: "id"
+                orig: "app_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                example: "us"
+                kind: "query"
+                name: "country"
+                orig: "country"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/app/{appId}"
+          parts: [
+            "api"
+            "app"
+            "{id}"
+          ]
+          rename: {
+            param: {
+              appId: "id"
+            }
+          }
+          select: {
+            exist: [
+              "country"
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

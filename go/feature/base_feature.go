@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/app-store-metadata-sdk/core"
+	"github.com/voxgig-sdk/app-store-metadata-sdk/go/core"
 )
 
 type BaseFeature struct {

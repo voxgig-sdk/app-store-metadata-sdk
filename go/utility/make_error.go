@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/app-store-metadata-sdk/core"
+import "github.com/voxgig-sdk/app-store-metadata-sdk/go/core"
 
 func makeErrorUtil(ctx *core.Context, err error) (any, error) {
 	if ctx == nil {

@@ -1,10 +1,10 @@
 package voxgigappstoremetadatasdk
 
 import (
-	"github.com/voxgig-sdk/app-store-metadata-sdk/core"
-	"github.com/voxgig-sdk/app-store-metadata-sdk/entity"
-	"github.com/voxgig-sdk/app-store-metadata-sdk/feature"
-	_ "github.com/voxgig-sdk/app-store-metadata-sdk/utility"
+	"github.com/voxgig-sdk/app-store-metadata-sdk/go/core"
+	"github.com/voxgig-sdk/app-store-metadata-sdk/go/entity"
+	"github.com/voxgig-sdk/app-store-metadata-sdk/go/feature"
+	_ "github.com/voxgig-sdk/app-store-metadata-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

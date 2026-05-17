@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/app-store-metadata-sdk"
-	"github.com/voxgig-sdk/app-store-metadata-sdk/core"
+	sdk "github.com/voxgig-sdk/app-store-metadata-sdk/go"
+	"github.com/voxgig-sdk/app-store-metadata-sdk/go/core"
 )
 
 func TestAppDirect(t *testing.T) {

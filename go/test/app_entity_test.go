@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/app-store-metadata-sdk"
-	"github.com/voxgig-sdk/app-store-metadata-sdk/core"
+	sdk "github.com/voxgig-sdk/app-store-metadata-sdk/go"
+	"github.com/voxgig-sdk/app-store-metadata-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/app-store-metadata-sdk/go/utility/struct"
 )
 
 func TestAppEntity(t *testing.T) {

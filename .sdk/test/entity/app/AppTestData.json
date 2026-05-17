@@ -15,7 +15,8 @@
         "release_date": "s96",
         "review": [],
         "screenshot": [],
-        "version": "s99"
+        "version": "s99",
+        "id": "APP00"
       },
       "APP01": {
         "app_id": "APP01",
@@ -31,7 +32,8 @@
         "release_date": "s122",
         "review": [],
         "screenshot": [],
-        "version": "s125"
+        "version": "s125",
+        "id": "APP01"
       },
       "APP02": {
         "app_id": "APP01",
@@ -47,7 +49,8 @@
         "release_date": "s1ae",
         "review": [],
         "screenshot": [],
-        "version": "s1b1"
+        "version": "s1b1",
+        "id": "APP02"
       }
     }
   },

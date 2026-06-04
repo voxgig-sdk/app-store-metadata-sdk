@@ -31,9 +31,7 @@ loading a specific record.
 ```ruby
 require_relative "AppStoreMetadata_sdk"
 
-client = AppStoreMetadataSDK.new({
-  "apikey" => ENV["APP-STORE-METADATA_APIKEY"],
-})
+client = AppStoreMetadataSDK.new({})
 ```
 
 ### 3. Load a app
@@ -121,7 +119,6 @@ Create a `.env.local` file at the project root:
 
 ```
 APP-STORE-METADATA_TEST_LIVE=TRUE
-APP-STORE-METADATA_APIKEY=<your-key>
 ```
 
 Then run:
@@ -144,7 +141,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `String` | API key for authentication. |
 | `base` | `String` | Base URL of the API server. |
 | `prefix` | `String` | URL path prefix prepended to all requests. |
 | `suffix` | `String` | URL path suffix appended to all requests. |

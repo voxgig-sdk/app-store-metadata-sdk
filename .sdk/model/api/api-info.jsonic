@@ -16,8 +16,24 @@ main: {
       ]
       title: "App Store Metadata API"
       version: "1.0.0"
+      tagline: "Fetch real-time iOS App Store metadata, ratings, and reviews via stable HTTP endpoints"
+      homepage: "https://app-store-metadata-api.kula.app"
+      docs_url: "https://freepublicapis.com/app-store-metadata-api"
+      about_md: `The App Store Metadata API is a lightweight HTTP service operated by [Kula](https://kula.app) that exposes metadata about applications listed on the Apple iOS App Store. It is designed as a drop-in alternative to scraping the App Store directly, returning JSON for a given app identifier.
+
+What you get from the API:
+
+- App details (title, publisher, and other store metadata) for a given Apple app ID
+- Ratings information
+- User reviews
+
+The service exposes a versioned path under \`/api/v1/apple/apps/{appId}\` — for example \`GET /api/v1/apple/apps/361309726\` retrieves metadata for one app by its numeric App Store ID.
+
+Operational notes: the API is listed on [freepublicapis.com](https://freepublicapis.com/app-store-metadata-api) and has shown intermittent availability. Authentication requirements, rate limits, and licence terms are not published on the catalogue page — check the kula.app homepage for current status before relying on it in production.`
+      entity_desc: {
+        app: "An iOS application listed on the Apple App Store, addressed by its numeric Apple ID — e.g. `GET /api/v1/apple/apps/{appId}` returns the app's metadata, ratings, and reviews."
+      }
+      auth: false
     }
   }
-}
-
 }

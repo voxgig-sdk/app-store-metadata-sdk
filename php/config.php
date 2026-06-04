@@ -20,9 +20,6 @@ class AppStoreMetadataConfig
             ],
             "options" => [
                 "base" => "https://app-store-metadata-api.kula.app",
-                "auth" => [
-                    "prefix" => "Bearer",
-                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],

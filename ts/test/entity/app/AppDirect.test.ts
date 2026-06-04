@@ -79,14 +79,12 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'APPSTOREMETADATA_TEST_APP_ENTID': {},
     'APPSTOREMETADATA_TEST_LIVE': 'FALSE',
-    'APPSTOREMETADATA_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.APPSTOREMETADATA_TEST_LIVE
 
   if (live) {
     const client = new AppStoreMetadataSDK({
-      apikey: env.APPSTOREMETADATA_APIKEY,
     })
 
     let idmap: any = env['APPSTOREMETADATA_TEST_APP_ENTID']

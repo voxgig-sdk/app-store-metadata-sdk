@@ -91,6 +91,7 @@ function app_basic_setup(extra)
     ["APPSTOREMETADATA_TEST_APP_ENTID"] = idmap,
     ["APPSTOREMETADATA_TEST_LIVE"] = "FALSE",
     ["APPSTOREMETADATA_TEST_EXPLAIN"] = "FALSE",
+    ["APPSTOREMETADATA_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -102,6 +103,7 @@ function app_basic_setup(extra)
   if env["APPSTOREMETADATA_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
+        apikey = env["APPSTOREMETADATA_APIKEY"],
       },
       extra or {},
     })

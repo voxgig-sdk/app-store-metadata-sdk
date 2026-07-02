@@ -85,6 +85,7 @@ function app_basic_setup($extra)
         "APPSTOREMETADATA_TEST_APP_ENTID" => $idmap,
         "APPSTOREMETADATA_TEST_LIVE" => "FALSE",
         "APPSTOREMETADATA_TEST_EXPLAIN" => "FALSE",
+        "APPSTOREMETADATA_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -96,6 +97,7 @@ function app_basic_setup($extra)
     if ($env["APPSTOREMETADATA_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
+                "apikey" => $env["APPSTOREMETADATA_APIKEY"],
             ],
             $extra ?? [],
         ]);

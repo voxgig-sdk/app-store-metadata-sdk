@@ -110,12 +110,14 @@ func appDirectSetup(mockres any) *appDirectSetupResult {
 	env := envOverride(map[string]any{
 		"APPSTOREMETADATA_TEST_APP_ENTID": map[string]any{},
 		"APPSTOREMETADATA_TEST_LIVE":    "FALSE",
+		"APPSTOREMETADATA_APIKEY":       "NONE",
 	})
 
 	live := env["APPSTOREMETADATA_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["APPSTOREMETADATA_APIKEY"],
 		}
 		client := sdk.NewAppStoreMetadataSDK(mergedOpts)
 

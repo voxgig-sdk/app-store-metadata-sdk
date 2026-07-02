@@ -1,22 +1,8 @@
 # AppStoreMetadata SDK
 
-Fetch real-time iOS App Store metadata, ratings, and reviews via stable HTTP endpoints
+App Store Metadata API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About App Store Metadata API
-
-The App Store Metadata API is a lightweight HTTP service operated by [Kula](https://kula.app) that exposes metadata about applications listed on the Apple iOS App Store. It is designed as a drop-in alternative to scraping the App Store directly, returning JSON for a given app identifier.
-
-What you get from the API:
-
-- App details (title, publisher, and other store metadata) for a given Apple app ID
-- Ratings information
-- User reviews
-
-The service exposes a versioned path under `/api/v1/apple/apps/{appId}` — for example `GET /api/v1/apple/apps/361309726` retrieves metadata for one app by its numeric App Store ID.
-
-Operational notes: the API is listed on [freepublicapis.com](https://freepublicapis.com/app-store-metadata-api) and has shown intermittent availability. Authentication requirements, rate limits, and licence terms are not published on the catalogue page — check the kula.app homepage for current status before relying on it in production.
 
 ## Try it
 
@@ -50,27 +36,31 @@ gem install app-store-metadata-sdk
 luarocks install app-store-metadata-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { AppStoreMetadataSDK } from 'app-store-metadata'
 
-const client = new AppStoreMetadataSDK({})
+const client = new AppStoreMetadataSDK({
+  apikey: process.env.APP-STORE-METADATA_APIKEY,
+})
 
+// Load app data
+const app = await client.App().load({})
+console.log(app.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -100,7 +90,7 @@ The API exposes one entity:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **App** | An iOS application listed on the Apple App Store, addressed by its numeric Apple ID — e.g. `GET /api/v1/apple/apps/{appId}` returns the app's metadata, ratings, and reviews. | `/api/app/{appId}` |
+| **App** |  | `/api/app/{appId}` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -110,15 +100,17 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from appstoremetadata_sdk import AppStoreMetadataSDK
 
-client = AppStoreMetadataSDK({})
+client = AppStoreMetadataSDK({
+    "apikey": os.environ.get("APP-STORE-METADATA_APIKEY"),
+})
 
 
 # Load a specific app
-app, err = client.App(None).load(
-    {"id": "example_id"}, None
-)
+app, err = client.App().load({"id": "example_id"})
+print(app)
 ```
 
 ### PHP
@@ -127,13 +119,14 @@ app, err = client.App(None).load(
 <?php
 require_once 'appstoremetadata_sdk.php';
 
-$client = new AppStoreMetadataSDK([]);
+$client = new AppStoreMetadataSDK([
+    "apikey" => getenv("APP-STORE-METADATA_APIKEY"),
+]);
 
 
 // Load a specific app
-[$app, $err] = $client->App(null)->load(
-    ["id" => "example_id"], null
-);
+[$app, $err] = $client->App()->load(["id" => "example_id"]);
+print_r($app);
 ```
 
 ### Golang
@@ -141,8 +134,13 @@ $client = new AppStoreMetadataSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/app-store-metadata-sdk/go"
 
-client := sdk.NewAppStoreMetadataSDK(map[string]any{})
+client := sdk.NewAppStoreMetadataSDK(map[string]any{
+    "apikey": os.Getenv("APP-STORE-METADATA_APIKEY"),
+})
 
+// Load app data
+app, err := client.App(nil).Load(map[string]any{}, nil)
+fmt.Println(app)
 ```
 
 ### Ruby
@@ -150,13 +148,14 @@ client := sdk.NewAppStoreMetadataSDK(map[string]any{})
 ```ruby
 require_relative "AppStoreMetadata_sdk"
 
-client = AppStoreMetadataSDK.new({})
+client = AppStoreMetadataSDK.new({
+  "apikey" => ENV["APP-STORE-METADATA_APIKEY"],
+})
 
 
 # Load a specific app
-app, err = client.App(nil).load(
-  { "id" => "example_id" }, nil
-)
+app, err = client.App().load({ "id" => "example_id" })
+puts app
 ```
 
 ### Lua
@@ -164,13 +163,14 @@ app, err = client.App(nil).load(
 ```lua
 local sdk = require("app-store-metadata_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("APP-STORE-METADATA_APIKEY"),
+})
 
 
 -- Load a specific app
-local app, err = client:App(nil):load(
-  { id = "example_id" }, nil
-)
+local app, err = client:App():load({ id = "example_id" })
+print(app)
 ```
 
 ## Unit testing in offline mode
@@ -189,25 +189,21 @@ const result = await client.App().load({ id: 'test01' })
 ### Python
 
 ```python
-client = AppStoreMetadataSDK.test(None, None)
-result, err = client.App(None).load(
-    {"id": "test01"}, None
-)
+client = AppStoreMetadataSDK.test()
+result, err = client.App().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = AppStoreMetadataSDK::test(null, null);
-[$result, $err] = $client->App(null)->load(
-    ["id" => "test01"], null
-);
+$client = AppStoreMetadataSDK::test();
+[$result, $err] = $client->App()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.App(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -216,19 +212,15 @@ result, err := client.App(nil).Load(
 ### Ruby
 
 ```ruby
-client = AppStoreMetadataSDK.test(nil, nil)
-result, err = client.App(nil).load(
-  { "id" => "test01" }, nil
-)
+client = AppStoreMetadataSDK.test
+result, err = client.App().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:App(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:App():load({ id = "test01" })
 ```
 
 ## How it works
@@ -332,11 +324,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the App Store Metadata API
-
-- Upstream: [https://app-store-metadata-api.kula.app](https://app-store-metadata-api.kula.app)
-- API docs: [https://freepublicapis.com/app-store-metadata-api](https://freepublicapis.com/app-store-metadata-api)
 
 ---
 

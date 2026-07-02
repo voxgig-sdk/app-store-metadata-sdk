@@ -91,6 +91,7 @@ def _app_basic_setup(extra):
         "APPSTOREMETADATA_TEST_APP_ENTID": idmap,
         "APPSTOREMETADATA_TEST_LIVE": "FALSE",
         "APPSTOREMETADATA_TEST_EXPLAIN": "FALSE",
+        "APPSTOREMETADATA_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -101,6 +102,7 @@ def _app_basic_setup(extra):
     if env.get("APPSTOREMETADATA_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
+                "apikey": env.get("APPSTOREMETADATA_APIKEY"),
             },
             extra or {},
         ])

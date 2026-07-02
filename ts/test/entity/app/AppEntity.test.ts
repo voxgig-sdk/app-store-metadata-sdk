@@ -111,6 +111,7 @@ function basicSetup(extra?: any) {
     'APP_STORE_METADATA_TEST_APP_ENTID': idmap,
     'APP_STORE_METADATA_TEST_LIVE': 'FALSE',
     'APP_STORE_METADATA_TEST_EXPLAIN': 'FALSE',
+    'APP_STORE_METADATA_APIKEY': 'NONE',
   })
 
   idmap = env['APP_STORE_METADATA_TEST_APP_ENTID']
@@ -120,6 +121,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new AppStoreMetadataSDK(merge([
       {
+        apikey: env.APP_STORE_METADATA_APIKEY,
       },
       extra
     ]))

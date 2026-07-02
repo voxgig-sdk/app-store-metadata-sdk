@@ -1,6 +1,11 @@
 # AppStoreMetadata PHP SDK
 
-The PHP SDK for the AppStoreMetadata API. Provides an entity-oriented interface using PHP conventions.
+
+
+The PHP SDK for the AppStoreMetadata API — an entity-oriented client using PHP conventions.
+
+> Other languages, the CLI, and MCP server live alongside this one — see
+> the [top-level README](../README.md).
 
 
 ## Install
@@ -20,13 +25,15 @@ loading a specific record.
 <?php
 require_once 'appstoremetadata_sdk.php';
 
-$client = new AppStoreMetadataSDK([]);
+$client = new AppStoreMetadataSDK([
+    "apikey" => getenv("APP-STORE-METADATA_APIKEY"),
+]);
 ```
 
 ### 3. Load a app
 
 ```php
-[$result, $err] = $client->App(null)->load(["id" => "example_id"], null);
+[$result, $err] = $client->App()->load(["id" => "example_id"]);
 if ($err) { throw new \Exception($err); }
 print_r($result);
 ```
@@ -72,11 +79,9 @@ print_r($fetchdef["headers"]);
 Create a mock client for unit testing — no server required:
 
 ```php
-$client = AppStoreMetadataSDK::test(null, null);
+$client = AppStoreMetadataSDK::test();
 
-[$result, $err] = $client->AppStoreMetadata(null)->load(
-    ["id" => "test01"], null
-);
+[$result, $err] = $client->AppStoreMetadata()->load(["id" => "test01"]);
 // $result contains mock response data
 ```
 
@@ -111,6 +116,7 @@ Create a `.env.local` file at the project root:
 
 ```
 APP-STORE-METADATA_TEST_LIVE=TRUE
+APP-STORE-METADATA_APIKEY=<your-key>
 ```
 
 Then run:
@@ -133,6 +139,7 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
+| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |

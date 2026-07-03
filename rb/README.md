@@ -10,13 +10,13 @@ The Ruby SDK for the AppStoreMetadata API — an entity-oriented client using id
 
 ## Install
 ```bash
-gem install app-store-metadata-sdk
+gem install voxgig-sdk-app-store-metadata
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "app-store-metadata-sdk"
+gem "voxgig-sdk-app-store-metadata"
 ```
 
 Then run:

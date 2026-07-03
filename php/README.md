@@ -10,7 +10,7 @@ The PHP SDK for the AppStoreMetadata API — an entity-oriented client using PHP
 
 ## Install
 ```bash
-composer require voxgig/app-store-metadata-sdk
+composer require voxgig-sdk/app-store-metadata
 ```
 
 

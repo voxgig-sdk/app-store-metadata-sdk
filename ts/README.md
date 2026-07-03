@@ -10,7 +10,7 @@ The TypeScript SDK for the AppStoreMetadata API — a type-safe, entity-oriented
 
 ## Install
 ```bash
-npm install app-store-metadata
+npm install @voxgig-sdk/app-store-metadata
 ```
 ## Tutorial: your first API call
 

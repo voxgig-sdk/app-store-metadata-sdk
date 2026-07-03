@@ -8,12 +8,14 @@ source = {
   dir = "app-store-metadata-sdk/lua"
 }
 description = {
-  summary = "AppStoreMetadata SDK for Lua",
-  license = "MIT"
+  summary = "Unofficial generated Lua SDK for the App Store Metadata public API. Not affiliated with or endorsed by the upstream API provider.",
+  homepage = "https://github.com/voxgig-sdk/app-store-metadata-sdk",
+  issues_url = "https://github.com/voxgig-sdk/app-store-metadata-sdk/issues",
+  license = "MIT",
+  labels = { "voxgig", "sdk", "generated-sdk", "openapi", "api-client", "app-store-metadata" }
 }
 dependencies = {
   "lua >= 5.3",
-  "dkjson >= 2.5",
   "dkjson >= 2.5",
 }
 build = {

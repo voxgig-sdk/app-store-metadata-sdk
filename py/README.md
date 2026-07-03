@@ -10,7 +10,7 @@ The Python SDK for the AppStoreMetadata API — an entity-oriented client follow
 
 ## Install
 ```bash
-pip install app-store-metadata-sdk
+pip install voxgig-sdk-app-store-metadata
 ```
 
 Or install from source:

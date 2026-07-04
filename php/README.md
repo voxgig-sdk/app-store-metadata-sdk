@@ -33,9 +33,10 @@ $client = new AppStoreMetadataSDK();
 
 ```php
 try {
-    $result = $client->app()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare App record (throws on error).
+    $app = $client->App()->load(["id" => "example_id"]);
+    print_r($app);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -81,13 +82,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = AppStoreMetadataSDK::test();
+$client = AppStoreMetadataSDK::test([
+    "entity" => ["app" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->app()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$app = $client->App()->load(["id" => "test01"]);
+print_r($app);
 ```
 
 ### Use a custom fetch function
@@ -166,7 +171,7 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `get_utility` | `(): Utility` | Copy of the SDK utility object. |
 | `prepare` | `(array $fetchargs): array` | Build an HTTP request definition without sending. |
 | `direct` | `(array $fetchargs): array` | Build and send an HTTP request. |
-| `App` | `($data): AppEntity` | Create a App entity instance. |
+| `App` | `($data): AppEntity` | Create an App entity instance. |
 
 ### Entity interface
 
@@ -236,7 +241,7 @@ API path: `/api/app/{appId}`
 
 ### App
 
-Create an instance: `const app = client.app`
+Create an instance: `$app = $client->App();`
 
 #### Operations
 
@@ -265,8 +270,9 @@ Create an instance: `const app = client.app`
 
 #### Example: Load
 
-```ts
-const app = await client.app.load({ id: 'app_id' })
+```php
+// load() returns the bare App record (throws on error).
+$app = $client->App()->load(["id" => "app_id"]);
 ```
 
 
@@ -341,7 +347,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$app = $client->app();
+$app = $client->App();
 $app->load(["id" => "example_id"]);
 
 // $app->dataGet() now returns the loaded app data

@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:app():list() / client:app():load({ id = ... })
-function AppStoreMetadataSDK:app(data)
+-- Idiomatic facade: client:App():list() / client:App():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function AppStoreMetadataSDK:App(data)
   local EntityMod = require("entity.app_entity")
   if data == nil then
     if self._app == nil then
@@ -253,12 +254,6 @@ function AppStoreMetadataSDK:app(data)
     end
     return self._app
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:app() instead.
-function AppStoreMetadataSDK:App(data)
-  local EntityMod = require("entity.app_entity")
   return EntityMod.new(self, data)
 end
 

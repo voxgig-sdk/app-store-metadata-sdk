@@ -26,9 +26,9 @@ import { AppStoreMetadataSDK } from '@voxgig-sdk/app-store-metadata'
 
 const client = new AppStoreMetadataSDK()
 
-// Load app data
-const app = await client.app.load({})
-console.log(app.data)
+// Load app data (returns a App)
+const app = await client.App().load()
+console.log(app)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -84,8 +84,8 @@ from appstoremetadata_sdk import AppStoreMetadataSDK
 client = AppStoreMetadataSDK()
 
 
-# Load a specific app
-app = client.app.load({"id": "example_id"})
+# Load a specific app (returns the record, raises on error)
+app = client.App().load({"id": "example_id"})
 print(app)
 ```
 
@@ -98,8 +98,8 @@ require_once 'appstoremetadata_sdk.php';
 $client = new AppStoreMetadataSDK();
 
 
-// Load a specific app
-$app = $client->app()->load(["id" => "example_id"]);
+// Load a specific app (returns the bare record; throws on error)
+$app = $client->App()->load(["id" => "example_id"]);
 print_r($app);
 ```
 
@@ -123,8 +123,8 @@ require_relative "AppStoreMetadata_sdk"
 client = AppStoreMetadataSDK.new
 
 
-# Load a specific app
-app = client.app.load({ "id" => "example_id" })
+# Load a specific app (returns the bare record; raises on error)
+app = client.App.load({ "id" => "example_id" })
 puts app
 ```
 
@@ -137,7 +137,7 @@ local client = sdk.new()
 
 
 -- Load a specific app
-local app, err = client:app():load({ id = "example_id" })
+local app, err = client:App():load({ id = "example_id" })
 print(app)
 ```
 
@@ -150,22 +150,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = AppStoreMetadataSDK.test()
-const result = await client.app.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const app = await client.App().load({ id: 'test01' })
+// app is a bare App populated with mock data
+console.log(app)
 ```
 
 ### Python
 
 ```python
 client = AppStoreMetadataSDK.test()
-result = client.app.load({"id": "test01"})
+app = client.App().load({"id": "test01"})
+print(app)
 ```
 
 ### PHP
 
 ```php
-$client = AppStoreMetadataSDK::test();
-$result = $client->app()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = AppStoreMetadataSDK::test([
+    "entity" => ["app" => ["test01" => ["id" => "test01"]]],
+]);
+$app = $client->App()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -180,15 +185,18 @@ result, err := client.App(nil).Load(
 ### Ruby
 
 ```ruby
-client = AppStoreMetadataSDK.test
-result = client.app.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = AppStoreMetadataSDK.test({
+  "entity" => { "app" => { "test01" => { "id" => "test01" } } },
+})
+app = client.App.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:app():load({ id = "test01" })
+local result, err = client:App():load({ id = "test01" })
 ```
 
 ## How it works
@@ -236,6 +244,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

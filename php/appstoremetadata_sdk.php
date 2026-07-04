@@ -233,10 +233,10 @@ class AppStoreMetadataSDK
 
     private $_app = null;
 
-    // Idiomatic facade: $client->app()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias App() (PHP method
-    // names are case-insensitive).
-    public function app($data = null)
+    // Canonical facade: $client->App()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->app()
+    // resolves here too.
+    public function App($data = null)
     {
         require_once __DIR__ . '/entity/app_entity.php';
         if ($data === null) {

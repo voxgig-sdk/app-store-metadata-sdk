@@ -86,7 +86,7 @@ same parameters as `direct()`. Raises on error.
 ## AppEntity
 
 ```ruby
-app = client.app
+app = client.App
 ```
 
 ### Fields
@@ -115,7 +115,7 @@ app = client.app
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.app.load({ "id" => "app_id" })
+result = client.App.load({ "id" => "app_id" })
 ```
 
 ### Common Methods

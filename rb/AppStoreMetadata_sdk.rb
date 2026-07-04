@@ -208,13 +208,7 @@ class AppStoreMetadataSDK
   end
 
 
-  # Idiomatic facade: client.app.list / client.app.load({ "id" => ... })
-  def app
-    require_relative 'entity/app_entity'
-    @app ||= AppEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.app instead.
+  # Canonical facade: client.App.list / client.App.load({ "id" => ... })
   def App(data = nil)
     require_relative 'entity/app_entity'
     AppEntity.new(self, data)

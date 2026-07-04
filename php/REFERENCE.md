@@ -85,7 +85,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## AppEntity
 
 ```php
-$app = $client->app();
+$app = $client->App();
 ```
 
 ### Fields
@@ -114,7 +114,7 @@ $app = $client->app();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->app()->load(["id" => "app_id"]);
+$result = $client->App()->load(["id" => "app_id"]);
 ```
 
 ### Common Methods

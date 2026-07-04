@@ -109,7 +109,7 @@ Alias for `AppStoreMetadataSDK.test()`.
 ## AppEntity
 
 ```ts
-const app = client.app
+const app = client.App()
 ```
 
 ### Fields
@@ -138,7 +138,7 @@ const app = client.app
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.app.load({ id: 'app_id' })
+const result = await client.App().load({ id: 'app_id' })
 ```
 
 ### Common Methods

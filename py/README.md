@@ -33,10 +33,12 @@ client = AppStoreMetadataSDK()
 
 ### 3. Load an app
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.app.load({"id": "example_id"})
-    print(result)
+    app = client.App().load({"id": "example_id"})
+    print(app)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -84,8 +86,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = AppStoreMetadataSDK.test()
 
-result = client.app.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+app = client.App().load({"id": "test01"})
+# app contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -161,7 +164,7 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
-| `App` | `(data) -> AppEntity` | Create a App entity instance. |
+| `App` | `(data) -> AppEntity` | Create an App entity instance. |
 
 ### Entity interface
 
@@ -231,7 +234,7 @@ API path: `/api/app/{appId}`
 
 ### App
 
-Create an instance: `const app = client.app`
+Create an instance: `app = client.App()`
 
 #### Operations
 
@@ -260,8 +263,8 @@ Create an instance: `const app = client.app`
 
 #### Example: Load
 
-```ts
-const app = await client.app.load({ id: 'app_id' })
+```python
+app = client.App().load({"id": "app_id"})
 ```
 
 
@@ -335,7 +338,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-app = client.app
+app = client.App()
 app.load({"id": "example_id"})
 
 # app.data_get() now returns the loaded app data

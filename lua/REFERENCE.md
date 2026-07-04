@@ -83,7 +83,7 @@ same parameters as `direct()`.
 ## AppEntity
 
 ```lua
-local app = client:app(nil)
+local app = client:App(nil)
 ```
 
 ### Fields
@@ -112,7 +112,7 @@ local app = client:app(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:app():load({ id = "app_id" })
+local result, err = client:App():load({ id = "app_id" })
 ```
 
 ### Common Methods

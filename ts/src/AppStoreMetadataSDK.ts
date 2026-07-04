@@ -204,14 +204,7 @@ class AppStoreMetadataSDK {
 
 
 
-  _app?: AppEntity
-
-  // Idiomatic facade: `client.app.list()` / `client.app.load({ id })`.
-  get app(): AppEntity {
-    return (this._app ??= new AppEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.app` instead. */
+  // Entity access: `client.App().list()` / `client.App().load({ id })`.
   App(data?: any) {
     const self = this
     return new AppEntity(self,data)

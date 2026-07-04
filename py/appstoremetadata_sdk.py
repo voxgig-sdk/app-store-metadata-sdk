@@ -220,25 +220,15 @@ class AppStoreMetadataSDK:
         }
 
 
-    @property
-    def app(self):
-        """Idiomatic facade: client.app.list() / client.app.load({"id": ...})."""
-        from entity.app_entity import AppEntity
-        cached = getattr(self, "_app", None)
-        if cached is None:
-            cached = AppEntity(self, None)
-            self._app = cached
-        return cached
-
-    def App(self, data=None):
-        # Deprecated: use client.app instead.
+    def App(self, data=None) -> "AppEntity":
+        """Entity factory: client.App().list({}) / client.App().load({"id": ...})."""
         from entity.app_entity import AppEntity
         return AppEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "AppStoreMetadataSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -258,3 +248,9 @@ class AppStoreMetadataSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.app_entity import AppEntity

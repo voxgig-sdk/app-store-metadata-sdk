@@ -4,32 +4,34 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class App:
-    app_id: Optional[str] = None
-    app_name: Optional[str] = None
-    bundle_id: Optional[str] = None
-    category: Optional[str] = None
-    currency: Optional[str] = None
-    description: Optional[str] = None
-    developer: Optional[str] = None
-    icon_url: Optional[str] = None
-    price: Optional[float] = None
-    rating: Optional[dict] = None
-    release_date: Optional[str] = None
-    review: Optional[list] = None
-    screenshot: Optional[list] = None
-    version: Optional[str] = None
+class App(TypedDict, total=False):
+    app_id: str
+    app_name: str
+    bundle_id: str
+    category: str
+    currency: str
+    description: str
+    developer: str
+    icon_url: str
+    price: float
+    rating: dict
+    release_date: str
+    review: list
+    screenshot: list
+    version: str
 
 
-@dataclass
-class AppLoadMatch:
+class AppLoadMatch(TypedDict):
     id: str
-

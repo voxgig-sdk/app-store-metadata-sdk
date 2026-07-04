@@ -80,7 +80,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## AppEntity
 
 ```python
-app = client.app
+app = client.App()
 ```
 
 ### Fields
@@ -109,7 +109,7 @@ app = client.app
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.app.load({"id": "app_id"})
+result = client.App().load({"id": "app_id"})
 ```
 
 ### Common Methods

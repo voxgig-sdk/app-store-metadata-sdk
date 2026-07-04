@@ -38,10 +38,6 @@ class Config {
   options = {
     base: 'https://app-store-metadata-api.kula.app',
 
-    auth: {
-      prefix: 'Bearer',
-    },
-
     headers: {
       "content-type": "application/json"
     },
@@ -174,7 +170,8 @@ class Config {
                     "name": "id",
                     "orig": "app_id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ],
                 "query": [

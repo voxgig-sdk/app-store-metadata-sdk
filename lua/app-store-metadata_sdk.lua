@@ -244,6 +244,19 @@ end
 
 
 
+-- Idiomatic facade: client:app():list() / client:app():load({ id = ... })
+function AppStoreMetadataSDK:app(data)
+  local EntityMod = require("entity.app_entity")
+  if data == nil then
+    if self._app == nil then
+      self._app = EntityMod.new(self, nil)
+    end
+    return self._app
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:app() instead.
 function AppStoreMetadataSDK:App(data)
   local EntityMod = require("entity.app_entity")
   return EntityMod.new(self, data)

@@ -45,6 +45,7 @@ class AppEntity
     end
   end
 
+  # @return [App, Hash] the current App data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class AppEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of App fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single App.
+  #
+  # @param reqmatch [AppLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [App, Hash] the loaded App; raises AppStoreMetadataError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

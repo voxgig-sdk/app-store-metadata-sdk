@@ -2,6 +2,8 @@
 
 import { AppEntity } from './entity/AppEntity'
 
+export type * from './AppStoreMetadataTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -202,6 +204,14 @@ class AppStoreMetadataSDK {
 
 
 
+  _app?: AppEntity
+
+  // Idiomatic facade: `client.app.list()` / `client.app.load({ id })`.
+  get app(): AppEntity {
+    return (this._app ??= new AppEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.app` instead. */
   App(data?: any) {
     const self = this
     return new AppEntity(self,data)

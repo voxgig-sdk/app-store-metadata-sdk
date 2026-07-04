@@ -15,9 +15,6 @@ module AppStoreMetadataConfig
       },
       "options" => {
         "base" => "https://app-store-metadata-api.kula.app",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },
@@ -145,6 +142,7 @@ module AppStoreMetadataConfig
                         "orig" => "app_id",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 0,
                       },
                     ],
                     "query" => [

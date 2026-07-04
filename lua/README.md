@@ -9,12 +9,9 @@ The Lua SDK for the AppStoreMetadata API — an entity-oriented client using Lua
 
 
 ## Install
-```bash
-luarocks install voxgig-sdk-app-store-metadata
-```
-
-If the module is not yet published, add the source directory to
-your `LUA_PATH`:
+This package is not yet published to LuaRocks. Install it from the
+GitHub release tag (`lua/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/app-store-metadata-sdk/releases)),
+or add the source directory to your `LUA_PATH`:
 
 ```bash
 export LUA_PATH="path/to/lua/?.lua;path/to/lua/?/init.lua;;"
@@ -31,15 +28,13 @@ loading a specific record.
 ```lua
 local sdk = require("app-store-metadata_sdk")
 
-local client = sdk.new({
-  apikey = os.getenv("APP-STORE-METADATA_APIKEY"),
-})
+local client = sdk.new()
 ```
 
-### 3. Load a app
+### 3. Load an app
 
 ```lua
-local result, err = client:App():load({ id = "example_id" })
+local result, err = client:app():load({ id = "example_id" })
 if err then error(err) end
 print(result)
 ```
@@ -87,7 +82,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:AppStoreMetadata():load({ id = "test01" })
+local result, err = client:app():load({ id = "test01" })
 -- result contains mock response data
 ```
 
@@ -120,8 +115,7 @@ local client = sdk.new({
 Create a `.env.local` file at the project root:
 
 ```
-APP-STORE-METADATA_TEST_LIVE=TRUE
-APP-STORE-METADATA_APIKEY=<your-key>
+APP_STORE_METADATA_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -144,7 +138,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -234,7 +227,7 @@ API path: `/api/app/{appId}`
 
 ### App
 
-Create an instance: `const app = client.App()`
+Create an instance: `const app = client.app`
 
 #### Operations
 
@@ -264,7 +257,7 @@ Create an instance: `const app = client.App()`
 #### Example: Load
 
 ```ts
-const app = await client.App().load({ id: 'app_id' })
+const app = await client.app.load({ id: 'app_id' })
 ```
 
 
@@ -339,11 +332,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local moon = client:Moon(nil)
-moon:load({ planet_id = "earth", id = "luna" }, nil)
+local app = client:app()
+app:load({ id = "example_id" })
 
--- moon:data_get() now returns the loaded moon data
--- moon:match_get() returns the last match criteria
+-- app:data_get() now returns the loaded app data
+-- app:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

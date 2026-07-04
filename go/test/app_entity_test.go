@@ -117,7 +117,6 @@ func appBasicSetup(extra map[string]any) *entityTestSetup {
 		"APPSTOREMETADATA_TEST_APP_ENTID": idmap,
 		"APPSTOREMETADATA_TEST_LIVE":      "FALSE",
 		"APPSTOREMETADATA_TEST_EXPLAIN":   "FALSE",
-		"APPSTOREMETADATA_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["APPSTOREMETADATA_TEST_APP_ENTID"])
@@ -128,7 +127,6 @@ func appBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["APPSTOREMETADATA_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["APPSTOREMETADATA_APIKEY"],
 			},
 			extra,
 		})

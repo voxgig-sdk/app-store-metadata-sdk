@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  App,
+  AppLoadMatch,
+} from '../AppStoreMetadataTypes'
 
 // TODO: needs Entity superclass
-class AppEntity extends AppStoreMetadataEntityBase {
+class AppEntity extends AppStoreMetadataEntityBase<App> {
 
   constructor(client: AppStoreMetadataSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class AppEntity extends AppStoreMetadataEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: AppLoadMatch, ctrl?: Control): Promise<App> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class AppEntity extends AppStoreMetadataEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<App> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

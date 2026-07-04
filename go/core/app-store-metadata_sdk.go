@@ -245,6 +245,9 @@ func (sdk *AppStoreMetadataSDK) Direct(fetchargs map[string]any) (map[string]any
 }
 
 
+// App returns a App entity bound to this client.
+// Idiomatic usage: client.App(nil).List(nil, nil) or
+// client.App(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *AppStoreMetadataSDK) App(data map[string]any) AppStoreMetadataEntity {
 	return NewAppEntityFunc(sdk, data)
 }

@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -110,7 +109,7 @@ Alias for `AppStoreMetadataSDK.test()`.
 ## AppEntity
 
 ```ts
-const app = client.App()
+const app = client.app
 ```
 
 ### Fields
@@ -139,7 +138,7 @@ const app = client.App()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.App().load({ id: 'app_id' })
+const result = await client.app.load({ id: 'app_id' })
 ```
 
 ### Common Methods

@@ -9,9 +9,12 @@ The TypeScript SDK for the AppStoreMetadata API — a type-safe, entity-oriented
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/app-store-metadata
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/app-store-metadata-sdk/releases](https://github.com/voxgig-sdk/app-store-metadata-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { AppStoreMetadataSDK } from 'app-store-metadata'
+import { AppStoreMetadataSDK } from '@voxgig-sdk/app-store-metadata'
 
-const client = new AppStoreMetadataSDK({
-  apikey: process.env.APP-STORE-METADATA_APIKEY,
-})
+const client = new AppStoreMetadataSDK()
 ```
 
-### 3. Load a app
+### 3. Load an app
 
 ```ts
-const result = await client.App().load({ id: 'example_id' })
+const result = await client.app.load({ id: 'example_id' })
 
 if (result.ok) {
   console.log(result.data)
@@ -79,7 +80,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = AppStoreMetadataSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.app.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -87,7 +88,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new AppStoreMetadataSDK({ apikey: '...' })
+const client = new AppStoreMetadataSDK()
 const testClient = client.tester()
 ```
 
@@ -96,7 +97,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.app
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -123,7 +124,6 @@ const logger = {
 }
 
 const client = new AppStoreMetadataSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -133,8 +133,7 @@ const client = new AppStoreMetadataSDK({
 Create a `.env.local` file at the project root:
 
 ```
-APP-STORE-METADATA_TEST_LIVE=TRUE
-APP-STORE-METADATA_APIKEY=<your-key>
+APP_STORE_METADATA_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -152,7 +151,6 @@ cd ts && npm test
 
 ```ts
 new AppStoreMetadataSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -163,7 +161,6 @@ new AppStoreMetadataSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -279,7 +276,7 @@ API path: `/api/app/{appId}`
 
 ### App
 
-Create an instance: `const app = client.App()`
+Create an instance: `const app = client.app`
 
 #### Operations
 
@@ -309,7 +306,7 @@ Create an instance: `const app = client.App()`
 #### Example: Load
 
 ```ts
-const app = await client.App().load({ id: 'app_id' })
+const app = await client.app.load({ id: 'app_id' })
 ```
 
 
@@ -370,7 +367,7 @@ app-store-metadata/
 Import the SDK from the package root:
 
 ```ts
-import { AppStoreMetadataSDK } from 'app-store-metadata'
+import { AppStoreMetadataSDK } from '@voxgig-sdk/app-store-metadata'
 ```
 
 ### Entity state
@@ -380,11 +377,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const app = client.app
+await app.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// app.data() now returns the loaded app data
+// app.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

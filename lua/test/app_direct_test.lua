@@ -70,14 +70,12 @@ function app_direct_setup(mockres)
   local env = runner.env_override({
     ["APPSTOREMETADATA_TEST_APP_ENTID"] = {},
     ["APPSTOREMETADATA_TEST_LIVE"] = "FALSE",
-    ["APPSTOREMETADATA_APIKEY"] = "NONE",
   })
 
   local live = env["APPSTOREMETADATA_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
-      apikey = env["APPSTOREMETADATA_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

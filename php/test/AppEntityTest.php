@@ -49,8 +49,7 @@ class AppEntityTest extends TestCase
         // LOAD
         $app_ref01_ent = $client->App(null);
         $app_ref01_match_dt0 = [];
-        [$app_ref01_data_dt0_loaded, $err] = $app_ref01_ent->load($app_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $app_ref01_data_dt0_loaded = $app_ref01_ent->load($app_ref01_match_dt0, null);
         $this->assertNotNull($app_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function app_basic_setup($extra)
         "APPSTOREMETADATA_TEST_APP_ENTID" => $idmap,
         "APPSTOREMETADATA_TEST_LIVE" => "FALSE",
         "APPSTOREMETADATA_TEST_EXPLAIN" => "FALSE",
-        "APPSTOREMETADATA_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function app_basic_setup($extra)
     if ($env["APPSTOREMETADATA_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["APPSTOREMETADATA_APIKEY"],
             ],
             $extra ?? [],
         ]);

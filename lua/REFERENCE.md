@@ -90,20 +90,20 @@ local app = client:App(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `app_id` | ``$STRING`` | No |  |
-| `app_name` | ``$STRING`` | No |  |
-| `bundle_id` | ``$STRING`` | No |  |
-| `category` | ``$STRING`` | No |  |
-| `currency` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `developer` | ``$STRING`` | No |  |
-| `icon_url` | ``$STRING`` | No |  |
-| `price` | ``$NUMBER`` | No |  |
-| `rating` | ``$OBJECT`` | No |  |
-| `release_date` | ``$STRING`` | No |  |
-| `review` | ``$ARRAY`` | No |  |
-| `screenshot` | ``$ARRAY`` | No |  |
-| `version` | ``$STRING`` | No |  |
+| `app_id` | `string` | No |  |
+| `app_name` | `string` | No |  |
+| `bundle_id` | `string` | No |  |
+| `category` | `string` | No |  |
+| `currency` | `string` | No |  |
+| `description` | `string` | No |  |
+| `developer` | `string` | No |  |
+| `icon_url` | `string` | No |  |
+| `price` | `number` | No |  |
+| `rating` | `table` | No |  |
+| `release_date` | `string` | No |  |
+| `review` | `table` | No |  |
+| `screenshot` | `table` | No |  |
+| `version` | `string` | No |  |
 
 ### Operations
 

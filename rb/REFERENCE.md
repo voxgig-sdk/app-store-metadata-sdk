@@ -8,7 +8,7 @@ Complete API reference for the AppStoreMetadata Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'app-store-metadata_sdk'
+require_relative 'AppStoreMetadata_sdk'
 
 client = AppStoreMetadataSDK.new(options)
 ```
@@ -93,20 +93,20 @@ app = client.App
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `app_id` | ``$STRING`` | No |  |
-| `app_name` | ``$STRING`` | No |  |
-| `bundle_id` | ``$STRING`` | No |  |
-| `category` | ``$STRING`` | No |  |
-| `currency` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `developer` | ``$STRING`` | No |  |
-| `icon_url` | ``$STRING`` | No |  |
-| `price` | ``$NUMBER`` | No |  |
-| `rating` | ``$OBJECT`` | No |  |
-| `release_date` | ``$STRING`` | No |  |
-| `review` | ``$ARRAY`` | No |  |
-| `screenshot` | ``$ARRAY`` | No |  |
-| `version` | ``$STRING`` | No |  |
+| `app_id` | `String` | No |  |
+| `app_name` | `String` | No |  |
+| `bundle_id` | `String` | No |  |
+| `category` | `String` | No |  |
+| `currency` | `String` | No |  |
+| `description` | `String` | No |  |
+| `developer` | `String` | No |  |
+| `icon_url` | `String` | No |  |
+| `price` | `Float` | No |  |
+| `rating` | `Hash` | No |  |
+| `release_date` | `String` | No |  |
+| `review` | `Array` | No |  |
+| `screenshot` | `Array` | No |  |
+| `version` | `String` | No |  |
 
 ### Operations
 

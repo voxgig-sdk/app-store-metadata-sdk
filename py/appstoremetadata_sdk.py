@@ -221,7 +221,7 @@ class AppStoreMetadataSDK:
 
 
     def App(self, data=None) -> "AppEntity":
-        """Entity factory: client.App().list({}) / client.App().load({"id": ...})."""
+        """Entity factory: client.App().list() / client.App().load({"id": ...})."""
         from entity.app_entity import AppEntity
         return AppEntity(self, data)
 

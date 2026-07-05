@@ -8,7 +8,7 @@ Complete API reference for the AppStoreMetadata Python SDK.
 ### Constructor
 
 ```python
-from app-store-metadata_sdk import AppStoreMetadataSDK
+from appstoremetadata_sdk import AppStoreMetadataSDK
 
 client = AppStoreMetadataSDK(options)
 ```
@@ -87,20 +87,20 @@ app = client.App()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `app_id` | ``$STRING`` | No |  |
-| `app_name` | ``$STRING`` | No |  |
-| `bundle_id` | ``$STRING`` | No |  |
-| `category` | ``$STRING`` | No |  |
-| `currency` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `developer` | ``$STRING`` | No |  |
-| `icon_url` | ``$STRING`` | No |  |
-| `price` | ``$NUMBER`` | No |  |
-| `rating` | ``$OBJECT`` | No |  |
-| `release_date` | ``$STRING`` | No |  |
-| `review` | ``$ARRAY`` | No |  |
-| `screenshot` | ``$ARRAY`` | No |  |
-| `version` | ``$STRING`` | No |  |
+| `app_id` | `str` | No |  |
+| `app_name` | `str` | No |  |
+| `bundle_id` | `str` | No |  |
+| `category` | `str` | No |  |
+| `currency` | `str` | No |  |
+| `description` | `str` | No |  |
+| `developer` | `str` | No |  |
+| `icon_url` | `str` | No |  |
+| `price` | `float` | No |  |
+| `rating` | `dict` | No |  |
+| `release_date` | `str` | No |  |
+| `review` | `list` | No |  |
+| `screenshot` | `list` | No |  |
+| `version` | `str` | No |  |
 
 ### Operations
 

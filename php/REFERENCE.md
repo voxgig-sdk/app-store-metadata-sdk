@@ -8,7 +8,7 @@ Complete API reference for the AppStoreMetadata PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/app-store-metadata_sdk.php';
+require_once __DIR__ . '/appstoremetadata_sdk.php';
 
 $client = new AppStoreMetadataSDK($options);
 ```
@@ -45,11 +45,11 @@ $client = AppStoreMetadataSDK::test();
 
 Create a new `AppEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): AppStoreMetadataUtility`
 
 Return a copy of the SDK utility object.
 
@@ -92,20 +92,20 @@ $app = $client->App();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `app_id` | ``$STRING`` | No |  |
-| `app_name` | ``$STRING`` | No |  |
-| `bundle_id` | ``$STRING`` | No |  |
-| `category` | ``$STRING`` | No |  |
-| `currency` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `developer` | ``$STRING`` | No |  |
-| `icon_url` | ``$STRING`` | No |  |
-| `price` | ``$NUMBER`` | No |  |
-| `rating` | ``$OBJECT`` | No |  |
-| `release_date` | ``$STRING`` | No |  |
-| `review` | ``$ARRAY`` | No |  |
-| `screenshot` | ``$ARRAY`` | No |  |
-| `version` | ``$STRING`` | No |  |
+| `app_id` | `string` | No |  |
+| `app_name` | `string` | No |  |
+| `bundle_id` | `string` | No |  |
+| `category` | `string` | No |  |
+| `currency` | `string` | No |  |
+| `description` | `string` | No |  |
+| `developer` | `string` | No |  |
+| `icon_url` | `string` | No |  |
+| `price` | `float` | No |  |
+| `rating` | `array` | No |  |
+| `release_date` | `string` | No |  |
+| `review` | `array` | No |  |
+| `screenshot` | `array` | No |  |
+| `version` | `string` | No |  |
 
 ### Operations
 
@@ -119,19 +119,19 @@ $result = $client->App()->load(["id" => "app_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -140,7 +140,7 @@ Set the entity match criteria.
 Create a new `AppEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

@@ -91,6 +91,7 @@ same parameters as `Direct()`.
 
 ```go
 app := client.App(nil)
+fmt.Println(app.GetName()) // "app"
 ```
 
 ### Fields
@@ -120,6 +121,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.App(nil).Load(map[string]any{"id": "app_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods

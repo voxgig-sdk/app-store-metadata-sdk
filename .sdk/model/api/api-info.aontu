@@ -15,9 +15,9 @@ main: {
           url: "https://app-store-metadata-api.kula.app"
         }
       ]
+      summary: "The App Store Metadata API provides reliable access to real-time metadata about iOS apps, including app details, ratings, and reviews."
       title: "App Store Metadata API"
       version: "1.0.0"
+      website: "https://app-store-metadata-api.kula.app"
     }
   }
-}
-

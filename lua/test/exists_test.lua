@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- AppStoreMetadata SDK exists test
 
 local sdk = require("app-store-metadata_sdk")
 

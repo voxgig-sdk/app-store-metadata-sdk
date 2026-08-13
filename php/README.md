@@ -35,7 +35,7 @@ $client = new AppStoreMetadataSDK();
 
 ```php
 try {
-    // load() returns the bare App record (throws on error).
+    // load() returns the ENTITY — call data_get() for the App record (throws on error).
     $app = $client->App()->load(["id" => "example_id"]);
     print_r($app);
 } catch (\Throwable $err) {
@@ -126,7 +126,8 @@ $client = AppStoreMetadataSDK::test([
     "entity" => ["app" => ["test01" => ["id" => "test01"]]],
 ]);
 
-// Entity ops return the bare mock record (throws on error).
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
 $app = $client->App()->load(["id" => "test01"]);
 print_r($app);
 ```
@@ -225,7 +226,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -247,19 +248,19 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `app_id` |  |
-| `app_name` |  |
-| `bundle_id` |  |
+| `appId` |  |
+| `appName` |  |
+| `bundleId` |  |
 | `category` |  |
 | `currency` |  |
 | `description` |  |
 | `developer` |  |
-| `icon_url` |  |
+| `iconUrl` |  |
 | `price` |  |
 | `rating` |  |
-| `release_date` |  |
-| `review` |  |
-| `screenshot` |  |
+| `releaseDate` |  |
+| `reviews` |  |
+| `screenshots` |  |
 | `version` |  |
 
 Operations: Load.
@@ -285,25 +286,25 @@ Create an instance: `$app = $client->App();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `app_id` | `string` |  |
-| `app_name` | `string` |  |
-| `bundle_id` | `string` |  |
+| `appId` | `string` |  |
+| `appName` | `string` |  |
+| `bundleId` | `string` |  |
 | `category` | `string` |  |
 | `currency` | `string` |  |
 | `description` | `string` |  |
 | `developer` | `string` |  |
-| `icon_url` | `string` |  |
+| `iconUrl` | `string` |  |
 | `price` | `float` |  |
 | `rating` | `array` |  |
-| `release_date` | `string` |  |
-| `review` | `array` |  |
-| `screenshot` | `array` |  |
+| `releaseDate` | `string` |  |
+| `reviews` | `array` |  |
+| `screenshots` | `array` |  |
 | `version` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare App record (throws on error).
+// load() returns the ENTITY — call data_get() for the App record (throws on error).
 $app = $client->App()->load(["id" => "app_id"]);
 ```
 

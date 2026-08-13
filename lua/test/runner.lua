@@ -35,8 +35,8 @@ end
 
 
 function runner.env_override(m)
-  local live = runner.getenv("APPSTOREMETADATA_TEST_LIVE")
-  local override = runner.getenv("APPSTOREMETADATA_TEST_OVERRIDE")
+  local live = runner.getenv("APP_STORE_METADATA_TEST_LIVE")
+  local override = runner.getenv("APP_STORE_METADATA_TEST_OVERRIDE")
 
   if live == "TRUE" or override == "TRUE" then
     for key, _ in pairs(m) do
@@ -56,9 +56,9 @@ function runner.env_override(m)
     end
   end
 
-  local explain = runner.getenv("APPSTOREMETADATA_TEST_EXPLAIN")
+  local explain = runner.getenv("APP_STORE_METADATA_TEST_EXPLAIN")
   if explain ~= nil and explain ~= "" then
-    m["APPSTOREMETADATA_TEST_EXPLAIN"] = explain
+    m["APP_STORE_METADATA_TEST_EXPLAIN"] = explain
   end
 
   return m

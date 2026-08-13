@@ -116,19 +116,19 @@ const app = client.App()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `app_id` | `string` | No |  |
-| `app_name` | `string` | No |  |
-| `bundle_id` | `string` | No |  |
+| `appId` | `string` | No |  |
+| `appName` | `string` | No |  |
+| `bundleId` | `string` | No |  |
 | `category` | `string` | No |  |
 | `currency` | `string` | No |  |
 | `description` | `string` | No |  |
 | `developer` | `string` | No |  |
-| `icon_url` | `string` | No |  |
+| `iconUrl` | `string` | No |  |
 | `price` | `number` | No |  |
 | `rating` | `Record<string, any>` | No |  |
-| `release_date` | `string` | No |  |
-| `review` | `any[]` | No |  |
-| `screenshot` | `any[]` | No |  |
+| `releaseDate` | `string` | No |  |
+| `reviews` | `any[]` | No |  |
+| `screenshots` | `any[]` | No |  |
 | `version` | `string` | No |  |
 
 ### Operations

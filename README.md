@@ -23,7 +23,7 @@ support (`load`):
 
 ```ts
 const client = new AppStoreMetadataSDK()
-const app = await client.App().load()
+const app = await client.App().load({ id: "example_id" })
 ```
 
 Thinking in entities keeps the mental model small — for people and AI agents alike —
@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = AppStoreMetadataSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = AppStoreMetadataSDK.test({
+  entity: {
+    app: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const app = await client.App().load({ id: 'test01' })
-// app is a bare App populated with mock data
+// app is the App entity, populated with mock data
+// — call app.data() for the record itself
 console.log(app)
 ```
 
@@ -182,7 +191,7 @@ require_once 'appstoremetadata_sdk.php';
 $client = new AppStoreMetadataSDK();
 
 
-// Load a specific app (returns the bare record; throws on error)
+// Load a specific app (returns the ENTITY; call data_get() for the record; throws on error)
 $app = $client->App()->load(["id" => "example_id"]);
 print_r($app);
 ```
@@ -210,7 +219,7 @@ require_relative "AppStoreMetadata_sdk"
 client = AppStoreMetadataSDK.new
 
 
-# Load a specific app (returns the bare record; raises on error)
+# Load a specific app (returns the ENTITY; call data_get for the record)
 app = client.App.load({ "id" => "example_id" })
 puts app
 ```
@@ -344,6 +353,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://app-store-metadata-api.kula.app](https://app-store-metadata-api.kula.app)
 

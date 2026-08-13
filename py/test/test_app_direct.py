@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from appstoremetadata_sdk.utility.voxgig_struct import voxgig_struct as vs
 from appstoremetadata_sdk import AppStoreMetadataSDK
-from core import helpers
+from appstoremetadata_sdk.core import helpers
 from test import runner
 
 
@@ -63,11 +63,11 @@ def _app_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "APPSTOREMETADATA_TEST_APP_ENTID": {},
-        "APPSTOREMETADATA_TEST_LIVE": "FALSE",
+        "APP_STORE_METADATA_TEST_APP_ENTID": {},
+        "APP_STORE_METADATA_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("APPSTOREMETADATA_TEST_LIVE") == "TRUE"
+    live = env.get("APP_STORE_METADATA_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

@@ -16,11 +16,11 @@
 import pytest
 
 from appstoremetadata_sdk import AppStoreMetadataSDK
-from core.error import AppStoreMetadataError
-from core.result import AppStoreMetadataResult
-from core.response import AppStoreMetadataResponse
-from core.spec import AppStoreMetadataSpec
-from feature.base_feature import AppStoreMetadataBaseFeature
+from appstoremetadata_sdk.core.error import AppStoreMetadataError
+from appstoremetadata_sdk.core.result import AppStoreMetadataResult
+from appstoremetadata_sdk.core.response import AppStoreMetadataResponse
+from appstoremetadata_sdk.core.spec import AppStoreMetadataSpec
+from appstoremetadata_sdk.feature.base_feature import AppStoreMetadataBaseFeature
 
 
 def _client():

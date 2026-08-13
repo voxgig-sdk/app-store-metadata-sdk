@@ -87,19 +87,19 @@ app = client.App()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `app_id` | `str` | No |  |
-| `app_name` | `str` | No |  |
-| `bundle_id` | `str` | No |  |
+| `appId` | `str` | No |  |
+| `appName` | `str` | No |  |
+| `bundleId` | `str` | No |  |
 | `category` | `str` | No |  |
 | `currency` | `str` | No |  |
 | `description` | `str` | No |  |
 | `developer` | `str` | No |  |
-| `icon_url` | `str` | No |  |
+| `iconUrl` | `str` | No |  |
 | `price` | `float` | No |  |
 | `rating` | `dict` | No |  |
-| `release_date` | `str` | No |  |
-| `review` | `list` | No |  |
-| `screenshot` | `list` | No |  |
+| `releaseDate` | `str` | No |  |
+| `reviews` | `list` | No |  |
+| `screenshots` | `list` | No |  |
 | `version` | `str` | No |  |
 
 ### Operations

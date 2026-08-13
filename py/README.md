@@ -38,7 +38,7 @@ client = AppStoreMetadataSDK()
 
 ### 3. Load an app
 
-`load()` returns the bare record (a `dict`) and raises on error.
+`load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
@@ -122,7 +122,8 @@ Create a mock client for unit testing — no server required:
 ```python
 client = AppStoreMetadataSDK.test()
 
-# Entity ops return the bare record and raise on error.
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
 app = client.App().load({"id": "test01"})
 # app contains the mock response record
 ```
@@ -218,7 +219,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -240,19 +241,19 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `app_id` |  |
-| `app_name` |  |
-| `bundle_id` |  |
+| `appId` |  |
+| `appName` |  |
+| `bundleId` |  |
 | `category` |  |
 | `currency` |  |
 | `description` |  |
 | `developer` |  |
-| `icon_url` |  |
+| `iconUrl` |  |
 | `price` |  |
 | `rating` |  |
-| `release_date` |  |
-| `review` |  |
-| `screenshot` |  |
+| `releaseDate` |  |
+| `reviews` |  |
+| `screenshots` |  |
 | `version` |  |
 
 Operations: Load.
@@ -278,19 +279,19 @@ Create an instance: `app = client.App()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `app_id` | `str` |  |
-| `app_name` | `str` |  |
-| `bundle_id` | `str` |  |
+| `appId` | `str` |  |
+| `appName` | `str` |  |
+| `bundleId` | `str` |  |
 | `category` | `str` |  |
 | `currency` | `str` |  |
 | `description` | `str` |  |
 | `developer` | `str` |  |
-| `icon_url` | `str` |  |
+| `iconUrl` | `str` |  |
 | `price` | `float` |  |
 | `rating` | `dict` |  |
-| `release_date` | `str` |  |
-| `review` | `list` |  |
-| `screenshot` | `list` |  |
+| `releaseDate` | `str` |  |
+| `reviews` | `list` |  |
+| `screenshots` | `list` |  |
 | `version` | `str` |  |
 
 #### Example: Load

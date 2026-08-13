@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'AppStoreMetadata',
   }
 
 
@@ -56,21 +56,21 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "app_id",
+          "name": "appId",
           "req": false,
           "type": "`$STRING`",
           "index$": 0
         },
         {
           "active": true,
-          "name": "app_name",
+          "name": "appName",
           "req": false,
           "type": "`$STRING`",
           "index$": 1
         },
         {
           "active": true,
-          "name": "bundle_id",
+          "name": "bundleId",
           "req": false,
           "type": "`$STRING`",
           "index$": 2
@@ -105,7 +105,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "icon_url",
+          "name": "iconUrl",
           "req": false,
           "type": "`$STRING`",
           "index$": 7
@@ -126,21 +126,21 @@ class Config {
         },
         {
           "active": true,
-          "name": "release_date",
+          "name": "releaseDate",
           "req": false,
           "type": "`$STRING`",
           "index$": 10
         },
         {
           "active": true,
-          "name": "review",
+          "name": "reviews",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 11
         },
         {
           "active": true,
-          "name": "screenshot",
+          "name": "screenshots",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 12
@@ -186,6 +186,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/app/{appId}",
               "parts": [

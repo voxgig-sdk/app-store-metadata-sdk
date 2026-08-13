@@ -26,8 +26,8 @@ import {
 describe('AppEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when APPSTOREMETADATA_TEST_LIVE=TRUE.
-  afterEach(liveDelay('APPSTOREMETADATA_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when APP_STORE_METADATA_TEST_LIVE=TRUE.
+  afterEach(liveDelay('APP_STORE_METADATA_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = AppStoreMetadataSDK.test()

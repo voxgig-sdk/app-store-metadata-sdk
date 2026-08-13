@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ AppStoreMetadataUtility::setRegistrar(function (AppStoreMetadataUtility $u): voi
     $u->prepare_params = [AppStoreMetadataPrepareParams::class, 'call'];
     $u->prepare_path = [AppStoreMetadataPreparePath::class, 'call'];
     $u->prepare_query = [AppStoreMetadataPrepareQuery::class, 'call'];
+    $u->graphql_body = [AppStoreMetadataGraphql::class, 'body'];
+    $u->graphql_errors = [AppStoreMetadataGraphql::class, 'errors'];
     $u->result_basic = [AppStoreMetadataResultBasic::class, 'call'];
     $u->result_body = [AppStoreMetadataResultBody::class, 'call'];
     $u->result_headers = [AppStoreMetadataResultHeaders::class, 'call'];

@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# AppStoreMetadata SDK exists test
 
 import pytest
 from appstoremetadata_sdk import AppStoreMetadataSDK

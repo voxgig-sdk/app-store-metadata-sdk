@@ -7,19 +7,19 @@
 -- edit by hand.
 
 ---@class App
----@field app_id? string
----@field app_name? string
----@field bundle_id? string
+---@field appId? string
+---@field appName? string
+---@field bundleId? string
 ---@field category? string
 ---@field currency? string
 ---@field description? string
 ---@field developer? string
----@field icon_url? string
+---@field iconUrl? string
 ---@field price? number
 ---@field rating? table
----@field release_date? string
----@field review? table
----@field screenshot? table
+---@field releaseDate? string
+---@field reviews? table
+---@field screenshots? table
 ---@field version? string
 
 ---@class AppLoadMatch

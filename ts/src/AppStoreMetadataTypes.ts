@@ -6,19 +6,19 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
 export interface App {
-  app_id?: string
-  app_name?: string
-  bundle_id?: string
+  appId?: string
+  appName?: string
+  bundleId?: string
   category?: string
   currency?: string
   description?: string
   developer?: string
-  icon_url?: string
+  iconUrl?: string
   price?: number
   rating?: Record<string, any>
-  release_date?: string
-  review?: any[]
-  screenshot?: any[]
+  releaseDate?: string
+  reviews?: any[]
+  screenshots?: any[]
   version?: string
 }
 

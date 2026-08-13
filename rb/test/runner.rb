@@ -23,8 +23,8 @@ module AppStoreMetadataTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("APPSTOREMETADATA_TEST_LIVE")
-    override = getenv("APPSTOREMETADATA_TEST_OVERRIDE")
+    live = getenv("APP_STORE_METADATA_TEST_LIVE")
+    override = getenv("APP_STORE_METADATA_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module AppStoreMetadataTestRunner
       end
     end
 
-    explain = getenv("APPSTOREMETADATA_TEST_EXPLAIN")
-    m["APPSTOREMETADATA_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("APP_STORE_METADATA_TEST_EXPLAIN")
+    m["APP_STORE_METADATA_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

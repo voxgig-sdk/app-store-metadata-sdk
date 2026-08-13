@@ -26,7 +26,7 @@ class AppEntityTest < Minitest::Test
     # The basic flow consumes synthetic IDs from the fixture. In live mode
     # without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup[:synthetic_only]
-      skip "live entity test uses synthetic IDs from fixture — set APPSTOREMETADATA_TEST_APP_ENTID JSON to run live"
+      skip "live entity test uses synthetic IDs from fixture — set APP_STORE_METADATA_TEST_APP_ENTID JSON to run live"
       return
     end
     client = setup[:client]
@@ -74,22 +74,22 @@ def app_basic_setup(extra)
   # Detect ENTID env override before envOverride consumes it. When live
   # mode is on without a real override, the basic test runs against synthetic
   # IDs from the fixture and 4xx's. Surface this so the test can skip.
-  entid_env_raw = ENV["APPSTOREMETADATA_TEST_APP_ENTID"]
+  entid_env_raw = ENV["APP_STORE_METADATA_TEST_APP_ENTID"]
   idmap_overridden = !entid_env_raw.nil? && entid_env_raw.strip.start_with?("{")
 
   env = Runner.env_override({
-    "APPSTOREMETADATA_TEST_APP_ENTID" => idmap,
-    "APPSTOREMETADATA_TEST_LIVE" => "FALSE",
-    "APPSTOREMETADATA_TEST_EXPLAIN" => "FALSE",
+    "APP_STORE_METADATA_TEST_APP_ENTID" => idmap,
+    "APP_STORE_METADATA_TEST_LIVE" => "FALSE",
+    "APP_STORE_METADATA_TEST_EXPLAIN" => "FALSE",
   })
 
   idmap_resolved = Helpers.to_map(
-    env["APPSTOREMETADATA_TEST_APP_ENTID"])
+    env["APP_STORE_METADATA_TEST_APP_ENTID"])
   if idmap_resolved.nil?
     idmap_resolved = Helpers.to_map(idmap)
   end
 
-  if env["APPSTOREMETADATA_TEST_LIVE"] == "TRUE"
+  if env["APP_STORE_METADATA_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
       },
@@ -98,13 +98,13 @@ def app_basic_setup(extra)
     client = AppStoreMetadataSDK.new(Helpers.to_map(merged_opts))
   end
 
-  live = env["APPSTOREMETADATA_TEST_LIVE"] == "TRUE"
+  live = env["APP_STORE_METADATA_TEST_LIVE"] == "TRUE"
   {
     client: client,
     data: entity_data,
     idmap: idmap_resolved,
     env: env,
-    explain: env["APPSTOREMETADATA_TEST_EXPLAIN"] == "TRUE",
+    explain: env["APP_STORE_METADATA_TEST_EXPLAIN"] == "TRUE",
     live: live,
     synthetic_only: live && !idmap_overridden,
     now: (Time.now.to_f * 1000).to_i,

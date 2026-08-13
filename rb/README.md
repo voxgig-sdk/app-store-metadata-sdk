@@ -34,7 +34,7 @@ client = AppStoreMetadataSDK.new
 
 ```ruby
 begin
-  # load returns the bare App record (raises on error).
+  # load returns the ENTITY — call data_get for the App record (raises on error).
   app = client.App.load({ "id" => "example_id" })
   puts app
 rescue => err
@@ -120,7 +120,8 @@ client = AppStoreMetadataSDK.test({
   "entity" => { "app" => { "test01" => { "id" => "test01" } } },
 })
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 app = client.App.load({ "id" => "test01" })
 puts app
 ```
@@ -237,19 +238,19 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `app_id` |  |
-| `app_name` |  |
-| `bundle_id` |  |
+| `appId` |  |
+| `appName` |  |
+| `bundleId` |  |
 | `category` |  |
 | `currency` |  |
 | `description` |  |
 | `developer` |  |
-| `icon_url` |  |
+| `iconUrl` |  |
 | `price` |  |
 | `rating` |  |
-| `release_date` |  |
-| `review` |  |
-| `screenshot` |  |
+| `releaseDate` |  |
+| `reviews` |  |
+| `screenshots` |  |
 | `version` |  |
 
 Operations: Load.
@@ -275,25 +276,25 @@ Create an instance: `app = client.App`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `app_id` | `String` |  |
-| `app_name` | `String` |  |
-| `bundle_id` | `String` |  |
+| `appId` | `String` |  |
+| `appName` | `String` |  |
+| `bundleId` | `String` |  |
 | `category` | `String` |  |
 | `currency` | `String` |  |
 | `description` | `String` |  |
 | `developer` | `String` |  |
-| `icon_url` | `String` |  |
+| `iconUrl` | `String` |  |
 | `price` | `Float` |  |
 | `rating` | `Hash` |  |
-| `release_date` | `String` |  |
-| `review` | `Array` |  |
-| `screenshot` | `Array` |  |
+| `releaseDate` | `String` |  |
+| `reviews` | `Array` |  |
+| `screenshots` | `Array` |  |
 | `version` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare App record (raises on error).
+# load returns the ENTITY — call data_get for the App record (raises on error).
 app = client.App.load({ "id" => "app_id" })
 ```
 

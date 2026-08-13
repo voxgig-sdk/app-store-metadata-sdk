@@ -68,11 +68,11 @@ function app_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["APPSTOREMETADATA_TEST_APP_ENTID"] = {},
-    ["APPSTOREMETADATA_TEST_LIVE"] = "FALSE",
+    ["APP_STORE_METADATA_TEST_APP_ENTID"] = {},
+    ["APP_STORE_METADATA_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["APPSTOREMETADATA_TEST_LIVE"] == "TRUE"
+  local live = env["APP_STORE_METADATA_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

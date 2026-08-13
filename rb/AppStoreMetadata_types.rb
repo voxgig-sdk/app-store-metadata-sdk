@@ -10,13 +10,13 @@
 
 # App entity data model.
 #
-# @!attribute [rw] app_id
+# @!attribute [rw] appId
 #   @return [String, nil]
 #
-# @!attribute [rw] app_name
+# @!attribute [rw] appName
 #   @return [String, nil]
 #
-# @!attribute [rw] bundle_id
+# @!attribute [rw] bundleId
 #   @return [String, nil]
 #
 # @!attribute [rw] category
@@ -31,7 +31,7 @@
 # @!attribute [rw] developer
 #   @return [String, nil]
 #
-# @!attribute [rw] icon_url
+# @!attribute [rw] iconUrl
 #   @return [String, nil]
 #
 # @!attribute [rw] price
@@ -40,31 +40,31 @@
 # @!attribute [rw] rating
 #   @return [Hash, nil]
 #
-# @!attribute [rw] release_date
+# @!attribute [rw] releaseDate
 #   @return [String, nil]
 #
-# @!attribute [rw] review
+# @!attribute [rw] reviews
 #   @return [Array, nil]
 #
-# @!attribute [rw] screenshot
+# @!attribute [rw] screenshots
 #   @return [Array, nil]
 #
 # @!attribute [rw] version
 #   @return [String, nil]
 App = Struct.new(
-  :app_id,
-  :app_name,
-  :bundle_id,
+  :appId,
+  :appName,
+  :bundleId,
   :category,
   :currency,
   :description,
   :developer,
-  :icon_url,
+  :iconUrl,
   :price,
   :rating,
-  :release_date,
-  :review,
-  :screenshot,
+  :releaseDate,
+  :reviews,
+  :screenshots,
   :version,
   keyword_init: true
 )

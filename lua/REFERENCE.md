@@ -90,19 +90,19 @@ local app = client:App(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `app_id` | `string` | No |  |
-| `app_name` | `string` | No |  |
-| `bundle_id` | `string` | No |  |
+| `appId` | `string` | No |  |
+| `appName` | `string` | No |  |
+| `bundleId` | `string` | No |  |
 | `category` | `string` | No |  |
 | `currency` | `string` | No |  |
 | `description` | `string` | No |  |
 | `developer` | `string` | No |  |
-| `icon_url` | `string` | No |  |
+| `iconUrl` | `string` | No |  |
 | `price` | `number` | No |  |
 | `rating` | `table` | No |  |
-| `release_date` | `string` | No |  |
-| `review` | `table` | No |  |
-| `screenshot` | `table` | No |  |
+| `releaseDate` | `string` | No |  |
+| `reviews` | `table` | No |  |
+| `screenshots` | `table` | No |  |
 | `version` | `string` | No |  |
 
 ### Operations

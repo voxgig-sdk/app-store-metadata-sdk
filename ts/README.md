@@ -121,7 +121,8 @@ Create a mock client for unit testing — no server required:
 const client = AppStoreMetadataSDK.test()
 
 const app = await client.App().load({ id: 'test01' })
-// app is a bare entity populated with mock response data
+// app is the entity, populated with mock response data
+// — call app.data() for the record itself
 console.log(app)
 ```
 
@@ -284,19 +285,19 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `app_id` |  |
-| `app_name` |  |
-| `bundle_id` |  |
+| `appId` |  |
+| `appName` |  |
+| `bundleId` |  |
 | `category` |  |
 | `currency` |  |
 | `description` |  |
 | `developer` |  |
-| `icon_url` |  |
+| `iconUrl` |  |
 | `price` |  |
 | `rating` |  |
-| `release_date` |  |
-| `review` |  |
-| `screenshot` |  |
+| `releaseDate` |  |
+| `reviews` |  |
+| `screenshots` |  |
 | `version` |  |
 
 Operations: load.
@@ -322,19 +323,19 @@ Create an instance: `const app = client.App()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `app_id` | `string` |  |
-| `app_name` | `string` |  |
-| `bundle_id` | `string` |  |
+| `appId` | `string` |  |
+| `appName` | `string` |  |
+| `bundleId` | `string` |  |
 | `category` | `string` |  |
 | `currency` | `string` |  |
 | `description` | `string` |  |
 | `developer` | `string` |  |
-| `icon_url` | `string` |  |
+| `iconUrl` | `string` |  |
 | `price` | `number` |  |
 | `rating` | `Record<string, any>` |  |
-| `release_date` | `string` |  |
-| `review` | `any[]` |  |
-| `screenshot` | `any[]` |  |
+| `releaseDate` | `string` |  |
+| `reviews` | `any[]` |  |
+| `screenshots` | `any[]` |  |
 | `version` | `string` |  |
 
 #### Example: Load

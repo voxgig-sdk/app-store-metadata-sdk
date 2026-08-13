@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ AppStoreMetadataUtility.registrar = ->(u) {
   u.prepare_params = AppStoreMetadataUtilities::PrepareParams
   u.prepare_path = AppStoreMetadataUtilities::PreparePath
   u.prepare_query = AppStoreMetadataUtilities::PrepareQuery
+  u.graphql_body = AppStoreMetadataUtilities::GraphqlBody
+  u.graphql_errors = AppStoreMetadataUtilities::GraphqlErrors
   u.result_basic = AppStoreMetadataUtilities::ResultBasic
   u.result_body = AppStoreMetadataUtilities::ResultBody
   u.result_headers = AppStoreMetadataUtilities::ResultHeaders

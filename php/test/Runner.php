@@ -43,8 +43,8 @@ class AppStoreMetadataTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('APPSTOREMETADATA_TEST_LIVE');
-        $override = self::getenv('APPSTOREMETADATA_TEST_OVERRIDE');
+        $live = self::getenv('APP_STORE_METADATA_TEST_LIVE');
+        $override = self::getenv('APP_STORE_METADATA_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class AppStoreMetadataTestRunner
             }
         }
 
-        $explain = self::getenv('APPSTOREMETADATA_TEST_EXPLAIN');
+        $explain = self::getenv('APP_STORE_METADATA_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['APPSTOREMETADATA_TEST_EXPLAIN'] = $explain;
+            $m['APP_STORE_METADATA_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

@@ -258,19 +258,19 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"app_id"` |  |
-| `"app_name"` |  |
-| `"bundle_id"` |  |
+| `"appId"` |  |
+| `"appName"` |  |
+| `"bundleId"` |  |
 | `"category"` |  |
 | `"currency"` |  |
 | `"description"` |  |
 | `"developer"` |  |
-| `"icon_url"` |  |
+| `"iconUrl"` |  |
 | `"price"` |  |
 | `"rating"` |  |
-| `"release_date"` |  |
-| `"review"` |  |
-| `"screenshot"` |  |
+| `"releaseDate"` |  |
+| `"reviews"` |  |
+| `"screenshots"` |  |
 | `"version"` |  |
 
 Operations: Load.
@@ -296,19 +296,19 @@ Create an instance: `app := client.App(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `app_id` | `string` |  |
-| `app_name` | `string` |  |
-| `bundle_id` | `string` |  |
+| `appId` | `string` |  |
+| `appName` | `string` |  |
+| `bundleId` | `string` |  |
 | `category` | `string` |  |
 | `currency` | `string` |  |
 | `description` | `string` |  |
 | `developer` | `string` |  |
-| `icon_url` | `string` |  |
+| `iconUrl` | `string` |  |
 | `price` | `float64` |  |
 | `rating` | `map[string]any` |  |
-| `release_date` | `string` |  |
-| `review` | `[]any` |  |
-| `screenshot` | `[]any` |  |
+| `releaseDate` | `string` |  |
+| `reviews` | `[]any` |  |
+| `screenshots` | `[]any` |  |
 | `version` | `string` |  |
 
 #### Example: Load

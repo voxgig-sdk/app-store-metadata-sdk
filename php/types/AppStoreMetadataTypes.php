@@ -15,19 +15,19 @@ declare(strict_types=1);
 /** App entity data model. */
 class App
 {
-    public ?string $app_id = null;
-    public ?string $app_name = null;
-    public ?string $bundle_id = null;
+    public ?string $appId = null;
+    public ?string $appName = null;
+    public ?string $bundleId = null;
     public ?string $category = null;
     public ?string $currency = null;
     public ?string $description = null;
     public ?string $developer = null;
-    public ?string $icon_url = null;
+    public ?string $iconUrl = null;
     public ?float $price = null;
     public ?array $rating = null;
-    public ?string $release_date = null;
-    public ?array $review = null;
-    public ?array $screenshot = null;
+    public ?string $releaseDate = null;
+    public ?array $reviews = null;
+    public ?array $screenshots = null;
     public ?string $version = null;
 }
 

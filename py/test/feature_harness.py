@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import AppStoreMetadataControl
-from core.error import AppStoreMetadataError
-from core.result import AppStoreMetadataResult
-from core.spec import AppStoreMetadataSpec
+from appstoremetadata_sdk.config import make_config
+from appstoremetadata_sdk.features import _make_feature
+from appstoremetadata_sdk.core.control import AppStoreMetadataControl
+from appstoremetadata_sdk.core.error import AppStoreMetadataError
+from appstoremetadata_sdk.core.result import AppStoreMetadataResult
+from appstoremetadata_sdk.core.spec import AppStoreMetadataSpec
 
 
 # True when this SDK was generated with the named feature.

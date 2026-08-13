@@ -225,19 +225,19 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `app_id` |  |
-| `app_name` |  |
-| `bundle_id` |  |
+| `appId` |  |
+| `appName` |  |
+| `bundleId` |  |
 | `category` |  |
 | `currency` |  |
 | `description` |  |
 | `developer` |  |
-| `icon_url` |  |
+| `iconUrl` |  |
 | `price` |  |
 | `rating` |  |
-| `release_date` |  |
-| `review` |  |
-| `screenshot` |  |
+| `releaseDate` |  |
+| `reviews` |  |
+| `screenshots` |  |
 | `version` |  |
 
 Operations: Load.
@@ -263,19 +263,19 @@ Create an instance: `local app = client:App(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `app_id` | `string` |  |
-| `app_name` | `string` |  |
-| `bundle_id` | `string` |  |
+| `appId` | `string` |  |
+| `appName` | `string` |  |
+| `bundleId` | `string` |  |
 | `category` | `string` |  |
 | `currency` | `string` |  |
 | `description` | `string` |  |
 | `developer` | `string` |  |
-| `icon_url` | `string` |  |
+| `iconUrl` | `string` |  |
 | `price` | `number` |  |
 | `rating` | `table` |  |
-| `release_date` | `string` |  |
-| `review` | `table` |  |
-| `screenshot` | `table` |  |
+| `releaseDate` | `string` |  |
+| `reviews` | `table` |  |
+| `screenshots` | `table` |  |
 | `version` | `string` |  |
 
 #### Example: Load

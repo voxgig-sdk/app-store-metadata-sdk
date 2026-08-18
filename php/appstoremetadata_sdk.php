@@ -40,7 +40,7 @@ class AppStoreMetadataSDK
         $utility = new AppStoreMetadataUtility();
         $this->_utility = $utility;
 
-        $config = AppStoreMetadataConfig::make_config();
+        $config = AppStoreMetadataConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

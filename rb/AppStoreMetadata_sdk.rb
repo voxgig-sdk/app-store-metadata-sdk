@@ -28,7 +28,7 @@ class AppStoreMetadataSDK
     utility = AppStoreMetadataUtility.new
     @_utility = utility
 
-    config = AppStoreMetadataConfig.make_config
+    config = AppStoreMetadataConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

@@ -8,46 +8,55 @@ main: kit: entity: app: {
     {
       name: "appId"
       req: false
+      short: "Unique App Store identifier"
       type: "`$STRING`"
     }
     {
       name: "appName"
       req: false
+      short: "Name of the application"
       type: "`$STRING`"
     }
     {
       name: "bundleId"
       req: false
+      short: "App bundle identifier"
       type: "`$STRING`"
     }
     {
       name: "category"
       req: false
+      short: "Primary app category"
       type: "`$STRING`"
     }
     {
       name: "currency"
       req: false
+      short: "Currency code"
       type: "`$STRING`"
     }
     {
       name: "description"
       req: false
+      short: "Full app description"
       type: "`$STRING`"
     }
     {
       name: "developer"
       req: false
+      short: "Developer or publisher name"
       type: "`$STRING`"
     }
     {
       name: "iconUrl"
       req: false
+      short: "URL to app icon image"
       type: "`$STRING`"
     }
     {
       name: "price"
       req: false
+      short: "App price in local currency"
       type: "`$NUMBER`"
     }
     {
@@ -58,21 +67,25 @@ main: kit: entity: app: {
     {
       name: "releaseDate"
       req: false
+      short: "Release date of current version"
       type: "`$STRING`"
     }
     {
       name: "reviews"
       req: false
+      short: "Recent user reviews"
       type: "`$ARRAY`"
     }
     {
       name: "screenshots"
       req: false
+      short: "Array of screenshot URLs"
       type: "`$ARRAY`"
     }
     {
       name: "version"
       req: false
+      short: "Current version number"
       type: "`$STRING`"
     }
   ]

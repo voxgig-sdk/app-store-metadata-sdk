@@ -238,20 +238,20 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `appId` |  |
-| `appName` |  |
-| `bundleId` |  |
-| `category` |  |
-| `currency` |  |
-| `description` |  |
-| `developer` |  |
-| `iconUrl` |  |
-| `price` |  |
+| `appId` | Unique App Store identifier |
+| `appName` | Name of the application |
+| `bundleId` | App bundle identifier |
+| `category` | Primary app category |
+| `currency` | Currency code |
+| `description` | Full app description |
+| `developer` | Developer or publisher name |
+| `iconUrl` | URL to app icon image |
+| `price` | App price in local currency |
 | `rating` |  |
-| `releaseDate` |  |
-| `reviews` |  |
-| `screenshots` |  |
-| `version` |  |
+| `releaseDate` | Release date of current version |
+| `reviews` | Recent user reviews |
+| `screenshots` | Array of screenshot URLs |
+| `version` | Current version number |
 
 Operations: Load.
 
@@ -276,20 +276,20 @@ Create an instance: `app = client.App`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `appId` | `String` |  |
-| `appName` | `String` |  |
-| `bundleId` | `String` |  |
-| `category` | `String` |  |
-| `currency` | `String` |  |
-| `description` | `String` |  |
-| `developer` | `String` |  |
-| `iconUrl` | `String` |  |
-| `price` | `Float` |  |
+| `appId` | `String` | Unique App Store identifier |
+| `appName` | `String` | Name of the application |
+| `bundleId` | `String` | App bundle identifier |
+| `category` | `String` | Primary app category |
+| `currency` | `String` | Currency code |
+| `description` | `String` | Full app description |
+| `developer` | `String` | Developer or publisher name |
+| `iconUrl` | `String` | URL to app icon image |
+| `price` | `Float` | App price in local currency |
 | `rating` | `Hash` |  |
-| `releaseDate` | `String` |  |
-| `reviews` | `Array` |  |
-| `screenshots` | `Array` |  |
-| `version` | `String` |  |
+| `releaseDate` | `String` | Release date of current version |
+| `reviews` | `Array` | Recent user reviews |
+| `screenshots` | `Array` | Array of screenshot URLs |
+| `version` | `String` | Current version number |
 
 #### Example: Load
 

@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'AppStoreMetadata',
+        slug: "app-store-metadata",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -56,38 +67,47 @@ class Config {
       "fields": [
         {
           "name": "appId",
+          "short": "Unique App Store identifier",
           "type": "`$STRING`"
         },
         {
           "name": "appName",
+          "short": "Name of the application",
           "type": "`$STRING`"
         },
         {
           "name": "bundleId",
+          "short": "App bundle identifier",
           "type": "`$STRING`"
         },
         {
           "name": "category",
+          "short": "Primary app category",
           "type": "`$STRING`"
         },
         {
           "name": "currency",
+          "short": "Currency code",
           "type": "`$STRING`"
         },
         {
           "name": "description",
+          "short": "Full app description",
           "type": "`$STRING`"
         },
         {
           "name": "developer",
+          "short": "Developer or publisher name",
           "type": "`$STRING`"
         },
         {
           "name": "iconUrl",
+          "short": "URL to app icon image",
           "type": "`$STRING`"
         },
         {
           "name": "price",
+          "short": "App price in local currency",
           "type": "`$NUMBER`"
         },
         {
@@ -96,18 +116,22 @@ class Config {
         },
         {
           "name": "releaseDate",
+          "short": "Release date of current version",
           "type": "`$STRING`"
         },
         {
           "name": "reviews",
+          "short": "Recent user reviews",
           "type": "`$ARRAY`"
         },
         {
           "name": "screenshots",
+          "short": "Array of screenshot URLs",
           "type": "`$ARRAY`"
         },
         {
           "name": "version",
+          "short": "Current version number",
           "type": "`$STRING`"
         }
       ],

@@ -87,20 +87,20 @@ app = client.App()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `appId` | `str` | No |  |
-| `appName` | `str` | No |  |
-| `bundleId` | `str` | No |  |
-| `category` | `str` | No |  |
-| `currency` | `str` | No |  |
-| `description` | `str` | No |  |
-| `developer` | `str` | No |  |
-| `iconUrl` | `str` | No |  |
-| `price` | `float` | No |  |
+| `appId` | `str` | No | Unique App Store identifier |
+| `appName` | `str` | No | Name of the application |
+| `bundleId` | `str` | No | App bundle identifier |
+| `category` | `str` | No | Primary app category |
+| `currency` | `str` | No | Currency code |
+| `description` | `str` | No | Full app description |
+| `developer` | `str` | No | Developer or publisher name |
+| `iconUrl` | `str` | No | URL to app icon image |
+| `price` | `float` | No | App price in local currency |
 | `rating` | `dict` | No |  |
-| `releaseDate` | `str` | No |  |
-| `reviews` | `list` | No |  |
-| `screenshots` | `list` | No |  |
-| `version` | `str` | No |  |
+| `releaseDate` | `str` | No | Release date of current version |
+| `reviews` | `list` | No | Recent user reviews |
+| `screenshots` | `list` | No | Array of screenshot URLs |
+| `version` | `str` | No | Current version number |
 
 ### Operations
 

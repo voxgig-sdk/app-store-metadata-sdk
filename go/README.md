@@ -6,7 +6,7 @@ The Golang SDK for the AppStoreMetadata API — an entity-oriented client using 
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.App(nil)` — each with the same small set of operations (`Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -258,20 +258,20 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"appId"` |  |
-| `"appName"` |  |
-| `"bundleId"` |  |
-| `"category"` |  |
-| `"currency"` |  |
-| `"description"` |  |
-| `"developer"` |  |
-| `"iconUrl"` |  |
-| `"price"` |  |
+| `"appId"` | Unique App Store identifier |
+| `"appName"` | Name of the application |
+| `"bundleId"` | App bundle identifier |
+| `"category"` | Primary app category |
+| `"currency"` | Currency code |
+| `"description"` | Full app description |
+| `"developer"` | Developer or publisher name |
+| `"iconUrl"` | URL to app icon image |
+| `"price"` | App price in local currency |
 | `"rating"` |  |
-| `"releaseDate"` |  |
-| `"reviews"` |  |
-| `"screenshots"` |  |
-| `"version"` |  |
+| `"releaseDate"` | Release date of current version |
+| `"reviews"` | Recent user reviews |
+| `"screenshots"` | Array of screenshot URLs |
+| `"version"` | Current version number |
 
 Operations: Load.
 
@@ -296,20 +296,20 @@ Create an instance: `app := client.App(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `appId` | `string` |  |
-| `appName` | `string` |  |
-| `bundleId` | `string` |  |
-| `category` | `string` |  |
-| `currency` | `string` |  |
-| `description` | `string` |  |
-| `developer` | `string` |  |
-| `iconUrl` | `string` |  |
-| `price` | `float64` |  |
+| `appId` | `string` | Unique App Store identifier |
+| `appName` | `string` | Name of the application |
+| `bundleId` | `string` | App bundle identifier |
+| `category` | `string` | Primary app category |
+| `currency` | `string` | Currency code |
+| `description` | `string` | Full app description |
+| `developer` | `string` | Developer or publisher name |
+| `iconUrl` | `string` | URL to app icon image |
+| `price` | `float64` | App price in local currency |
 | `rating` | `map[string]any` |  |
-| `releaseDate` | `string` |  |
-| `reviews` | `[]any` |  |
-| `screenshots` | `[]any` |  |
-| `version` | `string` |  |
+| `releaseDate` | `string` | Release date of current version |
+| `reviews` | `[]any` | Recent user reviews |
+| `screenshots` | `[]any` | Array of screenshot URLs |
+| `version` | `string` | Current version number |
 
 #### Example: Load
 

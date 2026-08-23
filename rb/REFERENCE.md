@@ -93,20 +93,20 @@ app = client.App
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `appId` | `String` | No |  |
-| `appName` | `String` | No |  |
-| `bundleId` | `String` | No |  |
-| `category` | `String` | No |  |
-| `currency` | `String` | No |  |
-| `description` | `String` | No |  |
-| `developer` | `String` | No |  |
-| `iconUrl` | `String` | No |  |
-| `price` | `Float` | No |  |
+| `appId` | `String` | No | Unique App Store identifier |
+| `appName` | `String` | No | Name of the application |
+| `bundleId` | `String` | No | App bundle identifier |
+| `category` | `String` | No | Primary app category |
+| `currency` | `String` | No | Currency code |
+| `description` | `String` | No | Full app description |
+| `developer` | `String` | No | Developer or publisher name |
+| `iconUrl` | `String` | No | URL to app icon image |
+| `price` | `Float` | No | App price in local currency |
 | `rating` | `Hash` | No |  |
-| `releaseDate` | `String` | No |  |
-| `reviews` | `Array` | No |  |
-| `screenshots` | `Array` | No |  |
-| `version` | `String` | No |  |
+| `releaseDate` | `String` | No | Release date of current version |
+| `reviews` | `Array` | No | Recent user reviews |
+| `screenshots` | `Array` | No | Array of screenshot URLs |
+| `version` | `String` | No | Current version number |
 
 ### Operations
 

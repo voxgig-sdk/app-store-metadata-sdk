@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "AppStoreMetadata",
+			"slug": "app-store-metadata",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -33,38 +36,47 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "appId",
+						"short": "Unique App Store identifier",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "appName",
+						"short": "Name of the application",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "bundleId",
+						"short": "App bundle identifier",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "category",
+						"short": "Primary app category",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "currency",
+						"short": "Currency code",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "description",
+						"short": "Full app description",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "developer",
+						"short": "Developer or publisher name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "iconUrl",
+						"short": "URL to app icon image",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "price",
+						"short": "App price in local currency",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
@@ -73,18 +85,22 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "releaseDate",
+						"short": "Release date of current version",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "reviews",
+						"short": "Recent user reviews",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "screenshots",
+						"short": "Array of screenshot URLs",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "version",
+						"short": "Current version number",
 						"type": "`$STRING`",
 					},
 				},

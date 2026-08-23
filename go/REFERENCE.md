@@ -98,20 +98,20 @@ fmt.Println(app.GetName()) // "app"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `appId` | `string` | No |  |
-| `appName` | `string` | No |  |
-| `bundleId` | `string` | No |  |
-| `category` | `string` | No |  |
-| `currency` | `string` | No |  |
-| `description` | `string` | No |  |
-| `developer` | `string` | No |  |
-| `iconUrl` | `string` | No |  |
-| `price` | `float64` | No |  |
+| `appId` | `string` | No | Unique App Store identifier |
+| `appName` | `string` | No | Name of the application |
+| `bundleId` | `string` | No | App bundle identifier |
+| `category` | `string` | No | Primary app category |
+| `currency` | `string` | No | Currency code |
+| `description` | `string` | No | Full app description |
+| `developer` | `string` | No | Developer or publisher name |
+| `iconUrl` | `string` | No | URL to app icon image |
+| `price` | `float64` | No | App price in local currency |
 | `rating` | `map[string]any` | No |  |
-| `releaseDate` | `string` | No |  |
-| `reviews` | `[]any` | No |  |
-| `screenshots` | `[]any` | No |  |
-| `version` | `string` | No |  |
+| `releaseDate` | `string` | No | Release date of current version |
+| `reviews` | `[]any` | No | Recent user reviews |
+| `screenshots` | `[]any` | No | Array of screenshot URLs |
+| `version` | `string` | No | Current version number |
 
 ### Operations
 

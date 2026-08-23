@@ -248,20 +248,20 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `appId` |  |
-| `appName` |  |
-| `bundleId` |  |
-| `category` |  |
-| `currency` |  |
-| `description` |  |
-| `developer` |  |
-| `iconUrl` |  |
-| `price` |  |
+| `appId` | Unique App Store identifier |
+| `appName` | Name of the application |
+| `bundleId` | App bundle identifier |
+| `category` | Primary app category |
+| `currency` | Currency code |
+| `description` | Full app description |
+| `developer` | Developer or publisher name |
+| `iconUrl` | URL to app icon image |
+| `price` | App price in local currency |
 | `rating` |  |
-| `releaseDate` |  |
-| `reviews` |  |
-| `screenshots` |  |
-| `version` |  |
+| `releaseDate` | Release date of current version |
+| `reviews` | Recent user reviews |
+| `screenshots` | Array of screenshot URLs |
+| `version` | Current version number |
 
 Operations: Load.
 
@@ -286,20 +286,20 @@ Create an instance: `$app = $client->App();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `appId` | `string` |  |
-| `appName` | `string` |  |
-| `bundleId` | `string` |  |
-| `category` | `string` |  |
-| `currency` | `string` |  |
-| `description` | `string` |  |
-| `developer` | `string` |  |
-| `iconUrl` | `string` |  |
-| `price` | `float` |  |
+| `appId` | `string` | Unique App Store identifier |
+| `appName` | `string` | Name of the application |
+| `bundleId` | `string` | App bundle identifier |
+| `category` | `string` | Primary app category |
+| `currency` | `string` | Currency code |
+| `description` | `string` | Full app description |
+| `developer` | `string` | Developer or publisher name |
+| `iconUrl` | `string` | URL to app icon image |
+| `price` | `float` | App price in local currency |
 | `rating` | `array` |  |
-| `releaseDate` | `string` |  |
-| `reviews` | `array` |  |
-| `screenshots` | `array` |  |
-| `version` | `string` |  |
+| `releaseDate` | `string` | Release date of current version |
+| `reviews` | `array` | Recent user reviews |
+| `screenshots` | `array` | Array of screenshot URLs |
+| `version` | `string` | Current version number |
 
 #### Example: Load
 

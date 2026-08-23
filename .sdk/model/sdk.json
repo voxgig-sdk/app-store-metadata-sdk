@@ -36,54 +36,63 @@
               "active": true,
               "name": "appId",
               "req": false,
+              "short": "Unique App Store identifier",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "appName",
               "req": false,
+              "short": "Name of the application",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "bundleId",
               "req": false,
+              "short": "App bundle identifier",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "category",
               "req": false,
+              "short": "Primary app category",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "currency",
               "req": false,
+              "short": "Currency code",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "description",
               "req": false,
+              "short": "Full app description",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "developer",
               "req": false,
+              "short": "Developer or publisher name",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "iconUrl",
               "req": false,
+              "short": "URL to app icon image",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "price",
               "req": false,
+              "short": "App price in local currency",
               "type": "`$NUMBER`"
             },
             {
@@ -96,24 +105,28 @@
               "active": true,
               "name": "releaseDate",
               "req": false,
+              "short": "Release date of current version",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "reviews",
               "req": false,
+              "short": "Recent user reviews",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "screenshots",
               "req": false,
+              "short": "Array of screenshot URLs",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "version",
               "req": false,
+              "short": "Current version number",
               "type": "`$STRING`"
             }
           ],

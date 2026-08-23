@@ -90,20 +90,20 @@ local app = client:App(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `appId` | `string` | No |  |
-| `appName` | `string` | No |  |
-| `bundleId` | `string` | No |  |
-| `category` | `string` | No |  |
-| `currency` | `string` | No |  |
-| `description` | `string` | No |  |
-| `developer` | `string` | No |  |
-| `iconUrl` | `string` | No |  |
-| `price` | `number` | No |  |
+| `appId` | `string` | No | Unique App Store identifier |
+| `appName` | `string` | No | Name of the application |
+| `bundleId` | `string` | No | App bundle identifier |
+| `category` | `string` | No | Primary app category |
+| `currency` | `string` | No | Currency code |
+| `description` | `string` | No | Full app description |
+| `developer` | `string` | No | Developer or publisher name |
+| `iconUrl` | `string` | No | URL to app icon image |
+| `price` | `number` | No | App price in local currency |
 | `rating` | `table` | No |  |
-| `releaseDate` | `string` | No |  |
-| `reviews` | `table` | No |  |
-| `screenshots` | `table` | No |  |
-| `version` | `string` | No |  |
+| `releaseDate` | `string` | No | Release date of current version |
+| `reviews` | `table` | No | Recent user reviews |
+| `screenshots` | `table` | No | Array of screenshot URLs |
+| `version` | `string` | No | Current version number |
 
 ### Operations
 

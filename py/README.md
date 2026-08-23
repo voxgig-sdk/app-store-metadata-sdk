@@ -241,20 +241,20 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `appId` |  |
-| `appName` |  |
-| `bundleId` |  |
-| `category` |  |
-| `currency` |  |
-| `description` |  |
-| `developer` |  |
-| `iconUrl` |  |
-| `price` |  |
+| `appId` | Unique App Store identifier |
+| `appName` | Name of the application |
+| `bundleId` | App bundle identifier |
+| `category` | Primary app category |
+| `currency` | Currency code |
+| `description` | Full app description |
+| `developer` | Developer or publisher name |
+| `iconUrl` | URL to app icon image |
+| `price` | App price in local currency |
 | `rating` |  |
-| `releaseDate` |  |
-| `reviews` |  |
-| `screenshots` |  |
-| `version` |  |
+| `releaseDate` | Release date of current version |
+| `reviews` | Recent user reviews |
+| `screenshots` | Array of screenshot URLs |
+| `version` | Current version number |
 
 Operations: Load.
 
@@ -279,20 +279,20 @@ Create an instance: `app = client.App()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `appId` | `str` |  |
-| `appName` | `str` |  |
-| `bundleId` | `str` |  |
-| `category` | `str` |  |
-| `currency` | `str` |  |
-| `description` | `str` |  |
-| `developer` | `str` |  |
-| `iconUrl` | `str` |  |
-| `price` | `float` |  |
+| `appId` | `str` | Unique App Store identifier |
+| `appName` | `str` | Name of the application |
+| `bundleId` | `str` | App bundle identifier |
+| `category` | `str` | Primary app category |
+| `currency` | `str` | Currency code |
+| `description` | `str` | Full app description |
+| `developer` | `str` | Developer or publisher name |
+| `iconUrl` | `str` | URL to app icon image |
+| `price` | `float` | App price in local currency |
 | `rating` | `dict` |  |
-| `releaseDate` | `str` |  |
-| `reviews` | `list` |  |
-| `screenshots` | `list` |  |
-| `version` | `str` |  |
+| `releaseDate` | `str` | Release date of current version |
+| `reviews` | `list` | Recent user reviews |
+| `screenshots` | `list` | Array of screenshot URLs |
+| `version` | `str` | Current version number |
 
 #### Example: Load
 

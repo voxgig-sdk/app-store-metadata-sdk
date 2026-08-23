@@ -19,6 +19,9 @@ module AppStoreMetadataConfig
     {
       "main" => {
         "name" => "AppStoreMetadata",
+        "slug" => "app-store-metadata",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {
@@ -41,38 +44,47 @@ module AppStoreMetadataConfig
           "fields" => [
             {
               "name" => "appId",
+              "short" => "Unique App Store identifier",
               "type" => "`$STRING`",
             },
             {
               "name" => "appName",
+              "short" => "Name of the application",
               "type" => "`$STRING`",
             },
             {
               "name" => "bundleId",
+              "short" => "App bundle identifier",
               "type" => "`$STRING`",
             },
             {
               "name" => "category",
+              "short" => "Primary app category",
               "type" => "`$STRING`",
             },
             {
               "name" => "currency",
+              "short" => "Currency code",
               "type" => "`$STRING`",
             },
             {
               "name" => "description",
+              "short" => "Full app description",
               "type" => "`$STRING`",
             },
             {
               "name" => "developer",
+              "short" => "Developer or publisher name",
               "type" => "`$STRING`",
             },
             {
               "name" => "iconUrl",
+              "short" => "URL to app icon image",
               "type" => "`$STRING`",
             },
             {
               "name" => "price",
+              "short" => "App price in local currency",
               "type" => "`$NUMBER`",
             },
             {
@@ -81,18 +93,22 @@ module AppStoreMetadataConfig
             },
             {
               "name" => "releaseDate",
+              "short" => "Release date of current version",
               "type" => "`$STRING`",
             },
             {
               "name" => "reviews",
+              "short" => "Recent user reviews",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "screenshots",
+              "short" => "Array of screenshot URLs",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "version",
+              "short" => "Current version number",
               "type" => "`$STRING`",
             },
           ],

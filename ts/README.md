@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -285,20 +285,20 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `appId` |  |
-| `appName` |  |
-| `bundleId` |  |
-| `category` |  |
-| `currency` |  |
-| `description` |  |
-| `developer` |  |
-| `iconUrl` |  |
-| `price` |  |
+| `appId` | Unique App Store identifier |
+| `appName` | Name of the application |
+| `bundleId` | App bundle identifier |
+| `category` | Primary app category |
+| `currency` | Currency code |
+| `description` | Full app description |
+| `developer` | Developer or publisher name |
+| `iconUrl` | URL to app icon image |
+| `price` | App price in local currency |
 | `rating` |  |
-| `releaseDate` |  |
-| `reviews` |  |
-| `screenshots` |  |
-| `version` |  |
+| `releaseDate` | Release date of current version |
+| `reviews` | Recent user reviews |
+| `screenshots` | Array of screenshot URLs |
+| `version` | Current version number |
 
 Operations: load.
 
@@ -323,20 +323,20 @@ Create an instance: `const app = client.App()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `appId` | `string` |  |
-| `appName` | `string` |  |
-| `bundleId` | `string` |  |
-| `category` | `string` |  |
-| `currency` | `string` |  |
-| `description` | `string` |  |
-| `developer` | `string` |  |
-| `iconUrl` | `string` |  |
-| `price` | `number` |  |
+| `appId` | `string` | Unique App Store identifier |
+| `appName` | `string` | Name of the application |
+| `bundleId` | `string` | App bundle identifier |
+| `category` | `string` | Primary app category |
+| `currency` | `string` | Currency code |
+| `description` | `string` | Full app description |
+| `developer` | `string` | Developer or publisher name |
+| `iconUrl` | `string` | URL to app icon image |
+| `price` | `number` | App price in local currency |
 | `rating` | `Record<string, any>` |  |
-| `releaseDate` | `string` |  |
-| `reviews` | `any[]` |  |
-| `screenshots` | `any[]` |  |
-| `version` | `string` |  |
+| `releaseDate` | `string` | Release date of current version |
+| `reviews` | `any[]` | Recent user reviews |
+| `screenshots` | `any[]` | Array of screenshot URLs |
+| `version` | `string` | Current version number |
 
 #### Example: Load
 

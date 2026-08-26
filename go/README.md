@@ -266,6 +266,7 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | `"description"` | Full app description |
 | `"developer"` | Developer or publisher name |
 | `"iconUrl"` | URL to app icon image |
+| `"id"` |  |
 | `"price"` | App price in local currency |
 | `"rating"` |  |
 | `"releaseDate"` | Release date of current version |
@@ -304,6 +305,7 @@ Create an instance: `app := client.App(nil)`
 | `description` | `string` | Full app description |
 | `developer` | `string` | Developer or publisher name |
 | `iconUrl` | `string` | URL to app icon image |
+| `id` | `string` |  |
 | `price` | `float64` | App price in local currency |
 | `rating` | `map[string]any` |  |
 | `releaseDate` | `string` | Release date of current version |

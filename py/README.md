@@ -249,6 +249,7 @@ On error, `ok` is `False` and `err` contains the error value.
 | `description` | Full app description |
 | `developer` | Developer or publisher name |
 | `iconUrl` | URL to app icon image |
+| `id` |  |
 | `price` | App price in local currency |
 | `rating` |  |
 | `releaseDate` | Release date of current version |
@@ -287,6 +288,7 @@ Create an instance: `app = client.App()`
 | `description` | `str` | Full app description |
 | `developer` | `str` | Developer or publisher name |
 | `iconUrl` | `str` | URL to app icon image |
+| `id` | `str` |  |
 | `price` | `float` | App price in local currency |
 | `rating` | `dict` |  |
 | `releaseDate` | `str` | Release date of current version |

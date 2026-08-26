@@ -25,6 +25,7 @@ class App(TypedDict, total=False):
     description: str
     developer: str
     iconUrl: str
+    id: str
     price: float
     rating: dict
     releaseDate: str

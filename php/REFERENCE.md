@@ -100,6 +100,7 @@ $app = $client->App();
 | `description` | `string` | No | Full app description |
 | `developer` | `string` | No | Developer or publisher name |
 | `iconUrl` | `string` | No | URL to app icon image |
+| `id` | `string` | No |  |
 | `price` | `float` | No | App price in local currency |
 | `rating` | `array` | No |  |
 | `releaseDate` | `string` | No | Release date of current version |

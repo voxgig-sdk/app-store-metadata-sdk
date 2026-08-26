@@ -44,10 +44,14 @@ describe("AppEntity", function()
 
     -- LOAD
     local app_ref01_ent = client:App(nil)
-    local app_ref01_match_dt0 = {}
+    local app_ref01_match_dt0 = {
+      id = app_ref01_data["id"],
+    }
     local app_ref01_data_dt0_loaded, err = app_ref01_ent:load(app_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(app_ref01_data_dt0_loaded)
+    local app_ref01_data_dt0_load_result = helpers.to_map(type(app_ref01_data_dt0_loaded) == 'table' and app_ref01_data_dt0_loaded.data_get and app_ref01_data_dt0_loaded:data_get() or app_ref01_data_dt0_loaded)
+    assert.is_not_nil(app_ref01_data_dt0_load_result)
+    assert.are.equal(app_ref01_data_dt0_load_result["id"], app_ref01_data["id"])
 
   end)
 end)

@@ -42,6 +42,7 @@ class AppStoreMetadataConfig
           'options' => [
             'active' => false,
           ],
+          'transport' => 'base',
         ],
             ],
             "options" => [
@@ -94,6 +95,10 @@ class AppStoreMetadataConfig
             [
               'name' => 'iconUrl',
               'short' => 'URL to app icon image',
+              'type' => '`$STRING`',
+            ],
+            [
+              'name' => 'id',
               'type' => '`$STRING`',
             ],
             [

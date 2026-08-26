@@ -233,6 +233,7 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | `description` | Full app description |
 | `developer` | Developer or publisher name |
 | `iconUrl` | URL to app icon image |
+| `id` |  |
 | `price` | App price in local currency |
 | `rating` |  |
 | `releaseDate` | Release date of current version |
@@ -271,6 +272,7 @@ Create an instance: `local app = client:App(nil)`
 | `description` | `string` | Full app description |
 | `developer` | `string` | Developer or publisher name |
 | `iconUrl` | `string` | URL to app icon image |
+| `id` | `string` |  |
 | `price` | `number` | App price in local currency |
 | `rating` | `table` |  |
 | `releaseDate` | `string` | Release date of current version |

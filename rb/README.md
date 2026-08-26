@@ -246,6 +246,7 @@ returns a result `Hash` with these keys:
 | `description` | Full app description |
 | `developer` | Developer or publisher name |
 | `iconUrl` | URL to app icon image |
+| `id` |  |
 | `price` | App price in local currency |
 | `rating` |  |
 | `releaseDate` | Release date of current version |
@@ -284,6 +285,7 @@ Create an instance: `app = client.App`
 | `description` | `String` | Full app description |
 | `developer` | `String` | Developer or publisher name |
 | `iconUrl` | `String` | URL to app icon image |
+| `id` | `String` |  |
 | `price` | `Float` | App price in local currency |
 | `rating` | `Hash` |  |
 | `releaseDate` | `String` | Release date of current version |

@@ -15,6 +15,7 @@
 ---@field description? string
 ---@field developer? string
 ---@field iconUrl? string
+---@field id? string
 ---@field price? number
 ---@field rating? table
 ---@field releaseDate? string

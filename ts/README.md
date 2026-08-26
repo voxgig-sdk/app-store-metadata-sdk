@@ -145,7 +145,7 @@ await entity.load({ id: 'example' })
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
-console.log(data)
+console.log(data.id)
 ```
 
 ### Add custom middleware
@@ -293,6 +293,7 @@ The `prepare()` method returns:
 | `description` | Full app description |
 | `developer` | Developer or publisher name |
 | `iconUrl` | URL to app icon image |
+| `id` |  |
 | `price` | App price in local currency |
 | `rating` |  |
 | `releaseDate` | Release date of current version |
@@ -331,6 +332,7 @@ Create an instance: `const app = client.App()`
 | `description` | `string` | Full app description |
 | `developer` | `string` | Developer or publisher name |
 | `iconUrl` | `string` | URL to app icon image |
+| `id` | `string` |  |
 | `price` | `number` | App price in local currency |
 | `rating` | `Record<string, any>` |  |
 | `releaseDate` | `string` | Release date of current version |

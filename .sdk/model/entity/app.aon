@@ -54,6 +54,11 @@ main: kit: entity: app: {
       type: "`$STRING`"
     }
     {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "price"
       req: false
       short: "App price in local currency"
@@ -89,6 +94,11 @@ main: kit: entity: app: {
       type: "`$STRING`"
     }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "app"
   op: {

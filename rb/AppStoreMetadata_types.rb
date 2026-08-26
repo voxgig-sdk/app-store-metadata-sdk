@@ -34,6 +34,9 @@
 # @!attribute [rw] iconUrl
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] price
 #   @return [Float, nil]
 #
@@ -60,6 +63,7 @@ App = Struct.new(
   :description,
   :developer,
   :iconUrl,
+  :id,
   :price,
   :rating,
   :releaseDate,

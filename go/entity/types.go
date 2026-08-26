@@ -22,6 +22,7 @@ type App struct {
 	Description *string `json:"description,omitempty"`
 	Developer *string `json:"developer,omitempty"`
 	IconUrl *string `json:"iconUrl,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Price *float64 `json:"price,omitempty"`
 	Rating *map[string]any `json:"rating,omitempty"`
 	ReleaseDate *string `json:"releaseDate,omitempty"`

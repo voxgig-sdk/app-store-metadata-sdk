@@ -95,6 +95,7 @@ app = client.App()
 | `description` | `str` | No | Full app description |
 | `developer` | `str` | No | Developer or publisher name |
 | `iconUrl` | `str` | No | URL to app icon image |
+| `id` | `str` | No |  |
 | `price` | `float` | No | App price in local currency |
 | `rating` | `dict` | No |  |
 | `releaseDate` | `str` | No | Release date of current version |

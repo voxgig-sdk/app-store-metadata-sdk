@@ -256,6 +256,7 @@ On error, `ok` is `false` and `$err` contains the error value.
 | `description` | Full app description |
 | `developer` | Developer or publisher name |
 | `iconUrl` | URL to app icon image |
+| `id` |  |
 | `price` | App price in local currency |
 | `rating` |  |
 | `releaseDate` | Release date of current version |
@@ -294,6 +295,7 @@ Create an instance: `$app = $client->App();`
 | `description` | `string` | Full app description |
 | `developer` | `string` | Developer or publisher name |
 | `iconUrl` | `string` | URL to app icon image |
+| `id` | `string` |  |
 | `price` | `float` | App price in local currency |
 | `rating` | `array` |  |
 | `releaseDate` | `string` | Release date of current version |

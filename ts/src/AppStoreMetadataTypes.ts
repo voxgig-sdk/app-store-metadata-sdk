@@ -14,6 +14,7 @@ export interface App {
   description?: string
   developer?: string
   iconUrl?: string
+  id?: string
   price?: number
   rating?: Record<string, any>
   releaseDate?: string

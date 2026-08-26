@@ -98,6 +98,7 @@ local app = client:App(nil)
 | `description` | `string` | No | Full app description |
 | `developer` | `string` | No | Developer or publisher name |
 | `iconUrl` | `string` | No | URL to app icon image |
+| `id` | `string` | No |  |
 | `price` | `number` | No | App price in local currency |
 | `rating` | `table` | No |  |
 | `releaseDate` | `string` | No | Release date of current version |

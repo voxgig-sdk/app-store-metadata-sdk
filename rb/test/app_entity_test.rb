@@ -41,9 +41,13 @@ class AppEntityTest < Minitest::Test
 
     # LOAD
     app_ref01_ent = client.App(nil)
-    app_ref01_match_dt0 = {}
+    app_ref01_match_dt0 = {
+      "id" => app_ref01_data["id"],
+    }
     app_ref01_data_dt0_loaded = app_ref01_ent.load(app_ref01_match_dt0, nil)
-    assert !app_ref01_data_dt0_loaded.nil?
+    app_ref01_data_dt0_load_result = Helpers.to_map(app_ref01_data_dt0_loaded.respond_to?(:data_get) ? app_ref01_data_dt0_loaded.data_get : app_ref01_data_dt0_loaded)
+    assert !app_ref01_data_dt0_load_result.nil?
+    assert_equal app_ref01_data_dt0_load_result["id"], app_ref01_data["id"]
 
   end
 end

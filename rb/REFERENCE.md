@@ -101,6 +101,7 @@ app = client.App
 | `description` | `String` | No | Full app description |
 | `developer` | `String` | No | Developer or publisher name |
 | `iconUrl` | `String` | No | URL to app icon image |
+| `id` | `String` | No |  |
 | `price` | `Float` | No | App price in local currency |
 | `rating` | `Hash` | No |  |
 | `releaseDate` | `String` | No | Release date of current version |

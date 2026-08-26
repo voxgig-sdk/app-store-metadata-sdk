@@ -59,9 +59,12 @@ describe('AppEntity', async () => {
 
     let app_ref01_data = Object.values(setup.data.existing.app)[0] as any
 
-    // LOAD: skipped — no entity id field and load requires path params.
-    // Entity-var is declared here so later flow steps still compile.
+    // LOAD
     const app_ref01_ent = client.App()
+    const app_ref01_match_dt0: any = {}
+    app_ref01_match_dt0.id = app_ref01_data.id
+    const app_ref01_data_dt0 = (await app_ref01_ent.load(app_ref01_match_dt0)).data()
+    assert(app_ref01_data_dt0.id === app_ref01_data.id)
 
 
   })

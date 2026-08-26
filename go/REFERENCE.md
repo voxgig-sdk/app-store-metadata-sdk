@@ -106,6 +106,7 @@ fmt.Println(app.GetName()) // "app"
 | `description` | `string` | No | Full app description |
 | `developer` | `string` | No | Developer or publisher name |
 | `iconUrl` | `string` | No | URL to app icon image |
+| `id` | `string` | No |  |
 | `price` | `float64` | No | App price in local currency |
 | `rating` | `map[string]any` | No |  |
 | `releaseDate` | `string` | No | Release date of current version |

@@ -25,5 +25,6 @@ export interface App {
 
 export interface AppLoadMatch {
   id: string
+  country?: string
 }
 

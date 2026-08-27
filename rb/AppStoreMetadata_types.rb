@@ -77,8 +77,12 @@ App = Struct.new(
 #
 # @!attribute [rw] id
 #   @return [String]
+#
+# @!attribute [rw] country
+#   @return [String, nil]
 AppLoadMatch = Struct.new(
   :id,
+  :country,
   keyword_init: true
 )
 

@@ -25,6 +25,7 @@
 
 ---@class AppLoadMatch
 ---@field id string
+---@field country? string
 
 local M = {}
 

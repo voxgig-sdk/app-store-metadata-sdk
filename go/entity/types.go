@@ -34,6 +34,7 @@ type App struct {
 // AppLoadMatch is the typed request payload for App.LoadTyped.
 type AppLoadMatch struct {
 	Id string `json:"id"`
+	Country *string `json:"country,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

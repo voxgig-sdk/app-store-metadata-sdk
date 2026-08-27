@@ -34,5 +34,9 @@ class App(TypedDict, total=False):
     version: str
 
 
-class AppLoadMatch(TypedDict):
+class AppLoadMatchRequired(TypedDict):
     id: str
+
+
+class AppLoadMatch(AppLoadMatchRequired, total=False):
+    country: str

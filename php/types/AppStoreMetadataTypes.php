@@ -36,5 +36,6 @@ class App
 class AppLoadMatch
 {
     public string $id;
+    public ?string $country = null;
 }
 

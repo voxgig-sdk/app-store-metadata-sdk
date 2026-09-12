@@ -1,3 +1,4 @@
 /dist/
 /app-store-metadata-cli
 /go-cli
+.jostraca/

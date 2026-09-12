@@ -93,6 +93,7 @@ class AppStoreMetadataConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'uri',
               'name' => 'iconUrl',
               'short' => 'URL to app icon image',
               'type' => '`$STRING`',
@@ -111,6 +112,7 @@ class AppStoreMetadataConfig
               'type' => '`$OBJECT`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'releaseDate',
               'short' => 'Release date of current version',
               'type' => '`$STRING`',
@@ -130,6 +132,10 @@ class AppStoreMetadataConfig
               'short' => 'Current version number',
               'type' => '`$STRING`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'app',
           'op' => [
@@ -162,14 +168,20 @@ class AppStoreMetadataConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/app/{appId}',
-                  'parts' => [
-                    'api',
-                    'app',
-                    '{id}',
-                  ],
                   'rename' => [
                     'param' => [
                       'appId' => 'id',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'app',
+                    ],
+                    [
+                      'var' => 'id',
                     ],
                   ],
                   'select' => [
@@ -181,6 +193,11 @@ class AppStoreMetadataConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'app',
+                    '{id}',
                   ],
                 ],
               ],

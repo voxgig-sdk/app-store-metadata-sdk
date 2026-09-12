@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -102,6 +113,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "uri",
           "name": "iconUrl",
           "short": "URL to app icon image",
           "type": "`$STRING`"
@@ -120,6 +132,7 @@ class Config {
           "type": "`$OBJECT`"
         },
         {
+          "format": "date-time",
           "name": "releaseDate",
           "short": "Release date of current version",
           "type": "`$STRING`"
@@ -140,6 +153,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "app",
       "op": {
         "load": {
@@ -171,16 +188,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/app/{appId}",
-              "parts": [
-                "api",
-                "app",
-                "{id}"
-              ],
               "rename": {
                 "param": {
                   "appId": "id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "app"
+                },
+                {
+                  "var": "id"
+                }
+              ],
               "select": {
                 "exist": [
                   "country",
@@ -190,7 +213,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "app",
+                "{id}"
+              ]
             }
           ]
         }
@@ -206,6 +234,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 

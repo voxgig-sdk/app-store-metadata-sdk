@@ -48,6 +48,7 @@ main: kit: entity: app: {
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "iconUrl"
       req: false
       short: "URL to app icon image"
@@ -70,6 +71,7 @@ main: kit: entity: app: {
       type: "`$OBJECT`"
     }
     {
+      format: "date-time"
       name: "releaseDate"
       req: false
       short: "Release date of current version"
@@ -130,16 +132,22 @@ main: kit: entity: app: {
           }
           method: "GET"
           orig: "/api/app/{appId}"
-          parts: [
-            "api"
-            "app"
-            "{id}"
-          ]
           rename: {
             param: {
               appId: "id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "app"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "country"

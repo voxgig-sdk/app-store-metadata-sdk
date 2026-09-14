@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { AppStoreMetadataSDK } from '@voxgig-sdk/app-store-metadata'
+import { AppStoreMetadataSDK } from '@voxgig-sdk/app-store-metadata-sdk'
 
 const client = new AppStoreMetadataSDK()
 ```
@@ -429,7 +429,7 @@ app-store-metadata/
 Import the SDK from the package root:
 
 ```ts
-import { AppStoreMetadataSDK } from '@voxgig-sdk/app-store-metadata'
+import { AppStoreMetadataSDK } from '@voxgig-sdk/app-store-metadata-sdk'
 ```
 
 ### Entity state

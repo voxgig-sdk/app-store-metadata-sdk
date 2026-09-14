@@ -105,7 +105,7 @@ local result, err = client:App():load({ id = "test01" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/app-store-metadata` | publish pending — [install from git tag](https://github.com/voxgig-sdk/app-store-metadata-sdk/releases) |
+| TypeScript | `@voxgig-sdk/app-store-metadata-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/app-store-metadata-sdk/releases) |
 | Python | `voxgig-sdk-app-store-metadata` | publish pending — [install from git tag](https://github.com/voxgig-sdk/app-store-metadata-sdk/releases) |
 | PHP | `voxgig-sdk/app-store-metadata` | publish pending — [install from git tag](https://github.com/voxgig-sdk/app-store-metadata-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/app-store-metadata-sdk/go` | `go get github.com/voxgig-sdk/app-store-metadata-sdk/go@latest` |
@@ -119,7 +119,7 @@ local result, err = client:App():load({ id = "test01" })
 ### TypeScript
 
 ```ts
-import { AppStoreMetadataSDK } from '@voxgig-sdk/app-store-metadata'
+import { AppStoreMetadataSDK } from '@voxgig-sdk/app-store-metadata-sdk'
 
 const client = new AppStoreMetadataSDK()
 

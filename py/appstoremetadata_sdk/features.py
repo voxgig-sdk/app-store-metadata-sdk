@@ -1,12 +1,18 @@
 # AppStoreMetadata SDK feature factory
 
 from appstoremetadata_sdk.feature.base_feature import AppStoreMetadataBaseFeature
+from appstoremetadata_sdk.feature.ratelimit_feature import AppStoreMetadataRatelimitFeature
+from appstoremetadata_sdk.feature.retry_feature import AppStoreMetadataRetryFeature
 from appstoremetadata_sdk.feature.test_feature import AppStoreMetadataTestFeature
+from appstoremetadata_sdk.feature.timeout_feature import AppStoreMetadataTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: AppStoreMetadataBaseFeature(),
+    "ratelimit": lambda: AppStoreMetadataRatelimitFeature(),
+    "retry": lambda: AppStoreMetadataRetryFeature(),
     "test": lambda: AppStoreMetadataTestFeature(),
+    "timeout": lambda: AppStoreMetadataTimeoutFeature(),
 }
 
 

@@ -5,6 +5,8 @@ import * as Fs from 'node:fs'
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
 
 
 import { AppStoreMetadataSDK, BaseFeature, stdutil } from '../../..'
@@ -47,16 +49,13 @@ describe('AppEntity', async () => {
 
     const live = 'TRUE' === process.env.APP_STORE_METADATA_TEST_LIVE
     for (const op of ['load']) {
-      if (maybeSkipControl(t, 'entityOp', 'app.' + op, live)) return
+      if (!live && maybeSkipControl(t, 'entityOp', 'app.' + op, live)) return
     }
 
+    
     const setup = basicSetup()
-    // The basic flow consumes synthetic IDs and field values from the
-    // fixture (entity TestData.json). Those don't exist on the live API.
-    // Skip live runs unless the user provided a real ENTID env override.
-    if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set APP_STORE_METADATA_TEST_APP_ENTID JSON to run live')
-      return
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"name":"appId","req":false,"short":"Unique App Store identifier","type":"`$STRING`","index$":0},{"active":true,"name":"appName","req":false,"short":"Name of the application","type":"`$STRING`","index$":1},{"active":true,"name":"bundleId","req":false,"short":"App bundle identifier","type":"`$STRING`","index$":2},{"active":true,"name":"category","req":false,"short":"Primary app category","type":"`$STRING`","index$":3},{"active":true,"name":"currency","req":false,"short":"Currency code","type":"`$STRING`","index$":4},{"active":true,"name":"description","req":false,"short":"Full app description","type":"`$STRING`","index$":5},{"active":true,"name":"developer","req":false,"short":"Developer or publisher name","type":"`$STRING`","index$":6},{"active":true,"format":"uri","name":"iconUrl","req":false,"short":"URL to app icon image","type":"`$STRING`","index$":7},{"active":true,"name":"id","req":false,"type":"`$STRING`","index$":8},{"active":true,"name":"price","req":false,"short":"App price in local currency","type":"`$NUMBER`","index$":9},{"active":true,"name":"rating","req":false,"type":"`$OBJECT`","index$":10},{"active":true,"format":"date-time","name":"releaseDate","req":false,"short":"Release date of current version","type":"`$STRING`","index$":11},{"active":true,"name":"reviews","req":false,"short":"Recent user reviews","type":"`$ARRAY`","index$":12},{"active":true,"name":"screenshots","req":false,"short":"Array of screenshot URLs","type":"`$ARRAY`","index$":13},{"active":true,"name":"version","req":false,"short":"Current version number","type":"`$STRING`","index$":14}],"id":{"field":"id","name":"id"},"name":"app","op":{"load":{"input":"data","name":"load","points":[{"active":true,"args":{"params":[{"active":true,"example":"284882215","kind":"param","name":"id","orig":"app_id","reqd":true,"type":"`$STRING`","index$":0}],"query":[{"active":true,"example":"us","kind":"query","name":"country","orig":"country","reqd":false,"type":"`$STRING`","index$":0}]},"contract":{"id":"GET /api/app/{appId}","json":"{\"operationId\":\"getAppMetadata\",\"parameters\":[{\"description\":\"The unique App Store ID of the iOS application\",\"example\":\"284882215\",\"in\":\"path\",\"name\":\"appId\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Two-letter country code for App Store region (ISO 3166-1 alpha-2)\",\"example\":\"us\",\"in\":\"query\",\"name\":\"country\",\"required\":false,\"schema\":{\"default\":\"us\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"appId\":\"284882215\",\"appName\":\"Facebook\",\"bundleId\":\"com.facebook.Facebook\",\"category\":\"Social Networking\",\"currency\":\"USD\",\"description\":\"Connect with friends and the world around you on Facebook.\",\"developer\":\"Meta Platforms, Inc.\",\"iconUrl\":\"https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/b5/d1/99/b5d19970-example.png\",\"price\":0,\"rating\":{\"average\":4.2,\"count\":5234567},\"releaseDate\":\"2024-01-15T00:00:00Z\",\"reviews\":[{\"author\":\"AppUser123\",\"content\":\"Love the new features and improvements.\",\"date\":\"2024-01-10T14:30:00Z\",\"id\":\"12345\",\"rating\":5,\"title\":\"Great app!\"}],\"screenshots\":[\"https://is1-ssl.mzstatic.com/image/thumb/PurpleSource126/v4/example1.png\",\"https://is1-ssl.mzstatic.com/image/thumb/PurpleSource126/v4/example2.png\"],\"version\":\"442.0\"},\"schema\":{\"properties\":{\"appId\":{\"description\":\"Unique App Store identifier\",\"type\":\"string\"},\"appName\":{\"description\":\"Name of the application\",\"type\":\"string\"},\"bundleId\":{\"description\":\"App bundle identifier\",\"type\":\"string\"},\"category\":{\"description\":\"Primary app category\",\"type\":\"string\"},\"currency\":{\"description\":\"Currency code\",\"type\":\"string\"},\"description\":{\"description\":\"Full app description\",\"type\":\"string\"},\"developer\":{\"description\":\"Developer or publisher name\",\"type\":\"string\"},\"iconUrl\":{\"description\":\"URL to app icon image\",\"format\":\"uri\",\"type\":\"string\"},\"price\":{\"description\":\"App price in local currency\",\"type\":\"number\"},\"rating\":{\"properties\":{\"average\":{\"description\":\"Average user rating\",\"format\":\"float\",\"type\":\"number\"},\"count\":{\"description\":\"Total number of ratings\",\"type\":\"integer\"}},\"type\":\"object\"},\"releaseDate\":{\"description\":\"Release date of current version\",\"format\":\"date-time\",\"type\":\"string\"},\"reviews\":{\"description\":\"Recent user reviews\",\"items\":{\"properties\":{\"author\":{\"description\":\"Review author username\",\"type\":\"string\"},\"content\":{\"description\":\"Review text content\",\"type\":\"string\"},\"date\":{\"description\":\"Review submission date\",\"format\":\"date-time\",\"type\":\"string\"},\"id\":{\"description\":\"Review identifier\",\"type\":\"string\"},\"rating\":{\"description\":\"Star rating (1-5)\",\"maximum\":5,\"minimum\":1,\"type\":\"integer\"},\"title\":{\"description\":\"Review title\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"screenshots\":{\"description\":\"Array of screenshot URLs\",\"items\":{\"format\":\"uri\",\"type\":\"string\"},\"type\":\"array\"},\"version\":{\"description\":\"Current version number\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with app metadata\"},\"400\":{\"content\":{\"application/json\":{\"example\":{\"error\":\"Invalid app ID format\"},\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Bad request - Invalid app ID format\"},\"404\":{\"content\":{\"application/json\":{\"example\":{\"error\":\"App not found in the specified App Store region\"},\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"App not found\"},\"429\":{\"content\":{\"application/json\":{\"example\":{\"error\":\"Rate limit exceeded. Please try again later.\"},\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Too many requests - Rate limit exceeded\"},\"500\":{\"content\":{\"application/json\":{\"example\":{\"error\":\"An internal error occurred while processing your request\"},\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/api/app/{appId}","rename":{"param":{"appId":"id"}},"segments":[{"lit":"api"},{"lit":"app"},{"var":"id"}],"select":{"exist":["country","id"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"app","name__orig":"app","Name":"App","name_":"app","name-":"app","NAME":"APP","index$":0}, {"active":true,"entity":"app","key$":"BasicAppFlow","kind":"basic","name":"BasicAppFlow","param":{},"step":[{"active":true,"data":{},"input":{"ref":"app_ref01","srcdatavar":"app_ref01_data","suffix":"_dt0"},"match":{"id":"app01"},"op":"load","spec":[],"valid":[{"apply":"TextFieldMark","def":{"mark":"Mark01-app_ref01"}}],"index$":0}]}, 'App')
     }
     const client = setup.client
     const struct = setup.struct
@@ -110,13 +109,6 @@ function basicSetup(extra?: any) {
       }]
     })
 
-  // Detect whether the user provided a real ENTID JSON via env var. The
-  // basic flow consumes synthetic IDs from the fixture file; without an
-  // override those synthetic IDs reach the live API and 4xx. Surface this
-  // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['APP_STORE_METADATA_TEST_APP_ENTID']
-  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
-
   const env = envOverride({
     'APP_STORE_METADATA_TEST_APP_ENTID': idmap,
     'APP_STORE_METADATA_TEST_LIVE': 'FALSE',
@@ -127,7 +119,13 @@ function basicSetup(extra?: any) {
 
   const live = 'TRUE' === env.APP_STORE_METADATA_TEST_LIVE
 
+  const transport = createLiveTransport()
   if (live) {
+    const rawIds = process.env['APP_STORE_METADATA_TEST_APP_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new AppStoreMetadataSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -139,7 +137,8 @@ function basicSetup(extra?: any) {
       // argument at all - so a bare 'extra' silently discarded the apikey
       // and server values above and handed the SDK undefined. Harmless
       // while there was nothing in that object; not harmless now.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -152,7 +151,7 @@ function basicSetup(extra?: any) {
     data: entityData,
     explain: 'TRUE' === env.APP_STORE_METADATA_TEST_EXPLAIN,
     live,
-    syntheticOnly: live && !idmapOverridden,
+    transport,
     now: Date.now(),
   }
 

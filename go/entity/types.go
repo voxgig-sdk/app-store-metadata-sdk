@@ -1,7 +1,7 @@
 // Typed models for the AppStoreMetadata SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,21 +14,6 @@ import (
 
 // App is the typed data model for the app entity.
 type App struct {
-	AppId *string `json:"appId,omitempty"`
-	AppName *string `json:"appName,omitempty"`
-	BundleId *string `json:"bundleId,omitempty"`
-	Category *string `json:"category,omitempty"`
-	Currency *string `json:"currency,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Developer *string `json:"developer,omitempty"`
-	IconUrl *string `json:"iconUrl,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Price *float64 `json:"price,omitempty"`
-	Rating *map[string]any `json:"rating,omitempty"`
-	ReleaseDate *string `json:"releaseDate,omitempty"`
-	Reviews *[]any `json:"reviews,omitempty"`
-	Screenshots *[]any `json:"screenshots,omitempty"`
-	Version *string `json:"version,omitempty"`
 }
 
 // AppLoadMatch is the typed request payload for App.LoadTyped.

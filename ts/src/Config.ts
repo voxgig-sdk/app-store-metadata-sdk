@@ -16,12 +16,6 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS: Record<string, any[]> = {
   
 }
@@ -32,7 +26,6 @@ class Config {
   makeFeature(this: any, fn: string) {
     const fc = FEATURE_CLASS[fn]
     const fi = new fc()
-    // TODO: errors etc
     return fi
   }
 
@@ -139,78 +132,93 @@ class Config {
       "fields": [
         {
           "name": "appId",
-          "short": "Unique App Store identifier",
-          "type": "`$STRING`"
+          "title": "App Id",
+          "type": "`$STRING`",
+          "short": "Unique App Store identifier"
         },
         {
           "name": "appName",
-          "short": "Name of the application",
-          "type": "`$STRING`"
+          "title": "App Name",
+          "type": "`$STRING`",
+          "short": "Name of the application"
         },
         {
           "name": "bundleId",
-          "short": "App bundle identifier",
-          "type": "`$STRING`"
+          "title": "Bundle Id",
+          "type": "`$STRING`",
+          "short": "App bundle identifier"
         },
         {
           "name": "category",
-          "short": "Primary app category",
-          "type": "`$STRING`"
+          "title": "Category",
+          "type": "`$STRING`",
+          "short": "Primary app category"
         },
         {
           "name": "currency",
-          "short": "Currency code",
-          "type": "`$STRING`"
+          "title": "Currency",
+          "type": "`$STRING`",
+          "short": "Currency code"
         },
         {
           "name": "description",
-          "short": "Full app description",
-          "type": "`$STRING`"
+          "title": "Description",
+          "type": "`$STRING`",
+          "short": "Full app description"
         },
         {
           "name": "developer",
-          "short": "Developer or publisher name",
-          "type": "`$STRING`"
+          "title": "Developer",
+          "type": "`$STRING`",
+          "short": "Developer or publisher name"
         },
         {
-          "format": "uri",
           "name": "iconUrl",
+          "title": "Icon Url",
+          "type": "`$STRING`",
           "short": "URL to app icon image",
-          "type": "`$STRING`"
+          "format": "uri"
         },
         {
           "name": "id",
+          "title": "Id",
           "type": "`$STRING`"
         },
         {
           "name": "price",
-          "short": "App price in local currency",
-          "type": "`$NUMBER`"
+          "title": "Price",
+          "type": "`$NUMBER`",
+          "short": "App price in local currency"
         },
         {
           "name": "rating",
+          "title": "Rating",
           "type": "`$OBJECT`"
         },
         {
-          "format": "date-time",
           "name": "releaseDate",
+          "title": "Release Date",
+          "type": "`$STRING`",
           "short": "Release date of current version",
-          "type": "`$STRING`"
+          "format": "date-time"
         },
         {
           "name": "reviews",
-          "short": "Recent user reviews",
-          "type": "`$ARRAY`"
+          "title": "Reviews",
+          "type": "`$ARRAY`",
+          "short": "Recent user reviews"
         },
         {
           "name": "screenshots",
-          "short": "Array of screenshot URLs",
-          "type": "`$ARRAY`"
+          "title": "Screenshots",
+          "type": "`$ARRAY`",
+          "short": "Array of screenshot URLs"
         },
         {
           "name": "version",
-          "short": "Current version number",
-          "type": "`$STRING`"
+          "title": "Version",
+          "type": "`$STRING`",
+          "short": "Current version number"
         }
       ],
       "id": {
@@ -224,35 +232,9 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "example": "284882215",
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "app_id",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ],
-                "query": [
-                  {
-                    "example": "us",
-                    "kind": "query",
-                    "name": "country",
-                    "orig": "country",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/app/{appId}",
-              "rename": {
-                "param": {
-                  "appId": "id"
-                }
-              },
               "segments": [
                 {
                   "lit": "api"
@@ -264,21 +246,47 @@ class Config {
                   "var": "id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "country",
-                  "id"
-                ]
+              "parts": [
+                "api",
+                "app",
+                "{id}"
+              ],
+              "rename": {
+                "param": {
+                  "appId": "id"
+                }
               },
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "api",
-                "app",
-                "{id}"
-              ]
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "app_id",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true,
+                    "example": "284882215"
+                  }
+                ],
+                "query": [
+                  {
+                    "name": "country",
+                    "orig": "country",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "us"
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "country",
+                  "id"
+                ]
+              }
             }
           ]
         }

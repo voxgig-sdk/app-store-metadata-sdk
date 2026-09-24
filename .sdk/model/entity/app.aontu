@@ -1,0 +1,188 @@
+# Entity: app
+
+main: kit: entity: app: {
+
+  alias: field: {}
+
+  fields: {
+    appId: {
+      h: "App Id"
+      n: "appId"
+      r: false
+      sh: "Unique App Store identifier"
+      t: "`$STRING`"
+    }
+    appName: {
+      h: "App Name"
+      n: "appName"
+      r: false
+      sh: "Name of the application"
+      t: "`$STRING`"
+    }
+    bundleId: {
+      h: "Bundle Id"
+      n: "bundleId"
+      r: false
+      sh: "App bundle identifier"
+      t: "`$STRING`"
+    }
+    category: {
+      h: "Category"
+      n: "category"
+      r: false
+      sh: "Primary app category"
+      t: "`$STRING`"
+    }
+    currency: {
+      h: "Currency"
+      n: "currency"
+      r: false
+      sh: "Currency code"
+      t: "`$STRING`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "Full app description"
+      t: "`$STRING`"
+    }
+    developer: {
+      h: "Developer"
+      n: "developer"
+      r: false
+      sh: "Developer or publisher name"
+      t: "`$STRING`"
+    }
+    iconUrl: {
+      fo: "uri"
+      h: "Icon Url"
+      n: "iconUrl"
+      r: false
+      sh: "URL to app icon image"
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    price: {
+      h: "Price"
+      n: "price"
+      r: false
+      sh: "App price in local currency"
+      t: "`$NUMBER`"
+    }
+    rating: {
+      h: "Rating"
+      n: "rating"
+      r: false
+      t: "`$OBJECT`"
+    }
+    releaseDate: {
+      fo: "date-time"
+      h: "Release Date"
+      n: "releaseDate"
+      r: false
+      sh: "Release date of current version"
+      t: "`$STRING`"
+    }
+    reviews: {
+      h: "Reviews"
+      n: "reviews"
+      r: false
+      sh: "Recent user reviews"
+      t: "`$ARRAY`"
+    }
+    screenshots: {
+      h: "Screenshots"
+      n: "screenshots"
+      r: false
+      sh: "Array of screenshot URLs"
+      t: "`$ARRAY`"
+    }
+    version: {
+      h: "Version"
+      n: "version"
+      r: false
+      sh: "Current version number"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "app"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/app/{appId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "284882215"
+                k: "param"
+                n: "id"
+                or: "app_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "us"
+                k: "query"
+                n: "country"
+                or: "country"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/app/{appId}"
+          q: {
+            exist: [
+              "country"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              appId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "app"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

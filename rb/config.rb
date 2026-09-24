@@ -99,78 +99,93 @@ module AppStoreMetadataConfig
           "fields" => [
             {
               "name" => "appId",
-              "short" => "Unique App Store identifier",
+              "title" => "App Id",
               "type" => "`$STRING`",
+              "short" => "Unique App Store identifier",
             },
             {
               "name" => "appName",
-              "short" => "Name of the application",
+              "title" => "App Name",
               "type" => "`$STRING`",
+              "short" => "Name of the application",
             },
             {
               "name" => "bundleId",
-              "short" => "App bundle identifier",
+              "title" => "Bundle Id",
               "type" => "`$STRING`",
+              "short" => "App bundle identifier",
             },
             {
               "name" => "category",
-              "short" => "Primary app category",
+              "title" => "Category",
               "type" => "`$STRING`",
+              "short" => "Primary app category",
             },
             {
               "name" => "currency",
-              "short" => "Currency code",
+              "title" => "Currency",
               "type" => "`$STRING`",
+              "short" => "Currency code",
             },
             {
               "name" => "description",
-              "short" => "Full app description",
+              "title" => "Description",
               "type" => "`$STRING`",
+              "short" => "Full app description",
             },
             {
               "name" => "developer",
-              "short" => "Developer or publisher name",
+              "title" => "Developer",
               "type" => "`$STRING`",
+              "short" => "Developer or publisher name",
             },
             {
-              "format" => "uri",
               "name" => "iconUrl",
-              "short" => "URL to app icon image",
+              "title" => "Icon Url",
               "type" => "`$STRING`",
+              "short" => "URL to app icon image",
+              "format" => "uri",
             },
             {
               "name" => "id",
+              "title" => "Id",
               "type" => "`$STRING`",
             },
             {
               "name" => "price",
-              "short" => "App price in local currency",
+              "title" => "Price",
               "type" => "`$NUMBER`",
+              "short" => "App price in local currency",
             },
             {
               "name" => "rating",
+              "title" => "Rating",
               "type" => "`$OBJECT`",
             },
             {
-              "format" => "date-time",
               "name" => "releaseDate",
-              "short" => "Release date of current version",
+              "title" => "Release Date",
               "type" => "`$STRING`",
+              "short" => "Release date of current version",
+              "format" => "date-time",
             },
             {
               "name" => "reviews",
-              "short" => "Recent user reviews",
+              "title" => "Reviews",
               "type" => "`$ARRAY`",
+              "short" => "Recent user reviews",
             },
             {
               "name" => "screenshots",
-              "short" => "Array of screenshot URLs",
+              "title" => "Screenshots",
               "type" => "`$ARRAY`",
+              "short" => "Array of screenshot URLs",
             },
             {
               "name" => "version",
-              "short" => "Current version number",
+              "title" => "Version",
               "type" => "`$STRING`",
+              "short" => "Current version number",
             },
           ],
           "id" => {
@@ -184,35 +199,9 @@ module AppStoreMetadataConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "example" => "284882215",
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "app_id",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                    "query" => [
-                      {
-                        "example" => "us",
-                        "kind" => "query",
-                        "name" => "country",
-                        "orig" => "country",
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/app/{appId}",
-                  "rename" => {
-                    "param" => {
-                      "appId" => "id",
-                    },
-                  },
                   "segments" => [
                     {
                       "lit" => "api",
@@ -224,21 +213,47 @@ module AppStoreMetadataConfig
                       "var" => "id",
                     },
                   ],
+                  "parts" => [
+                    "api",
+                    "app",
+                    "{id}",
+                  ],
+                  "rename" => {
+                    "param" => {
+                      "appId" => "id",
+                    },
+                  },
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "id",
+                        "orig" => "app_id",
+                        "type" => "`$STRING`",
+                        "kind" => "param",
+                        "reqd" => true,
+                        "example" => "284882215",
+                      },
+                    ],
+                    "query" => [
+                      {
+                        "name" => "country",
+                        "orig" => "country",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "example" => "us",
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "country",
                       "id",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "api",
-                    "app",
-                    "{id}",
-                  ],
                 },
               ],
             },

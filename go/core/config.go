@@ -91,78 +91,93 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "appId",
-						"short": "Unique App Store identifier",
+						"title": "App Id",
 						"type": "`$STRING`",
+						"short": "Unique App Store identifier",
 					},
 					map[string]any{
 						"name": "appName",
-						"short": "Name of the application",
+						"title": "App Name",
 						"type": "`$STRING`",
+						"short": "Name of the application",
 					},
 					map[string]any{
 						"name": "bundleId",
-						"short": "App bundle identifier",
+						"title": "Bundle Id",
 						"type": "`$STRING`",
+						"short": "App bundle identifier",
 					},
 					map[string]any{
 						"name": "category",
-						"short": "Primary app category",
+						"title": "Category",
 						"type": "`$STRING`",
+						"short": "Primary app category",
 					},
 					map[string]any{
 						"name": "currency",
-						"short": "Currency code",
+						"title": "Currency",
 						"type": "`$STRING`",
+						"short": "Currency code",
 					},
 					map[string]any{
 						"name": "description",
-						"short": "Full app description",
+						"title": "Description",
 						"type": "`$STRING`",
+						"short": "Full app description",
 					},
 					map[string]any{
 						"name": "developer",
-						"short": "Developer or publisher name",
+						"title": "Developer",
 						"type": "`$STRING`",
+						"short": "Developer or publisher name",
 					},
 					map[string]any{
-						"format": "uri",
 						"name": "iconUrl",
-						"short": "URL to app icon image",
+						"title": "Icon Url",
 						"type": "`$STRING`",
+						"short": "URL to app icon image",
+						"format": "uri",
 					},
 					map[string]any{
 						"name": "id",
+						"title": "Id",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "price",
-						"short": "App price in local currency",
+						"title": "Price",
 						"type": "`$NUMBER`",
+						"short": "App price in local currency",
 					},
 					map[string]any{
 						"name": "rating",
+						"title": "Rating",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "releaseDate",
-						"short": "Release date of current version",
+						"title": "Release Date",
 						"type": "`$STRING`",
+						"short": "Release date of current version",
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "reviews",
-						"short": "Recent user reviews",
+						"title": "Reviews",
 						"type": "`$ARRAY`",
+						"short": "Recent user reviews",
 					},
 					map[string]any{
 						"name": "screenshots",
-						"short": "Array of screenshot URLs",
+						"title": "Screenshots",
 						"type": "`$ARRAY`",
+						"short": "Array of screenshot URLs",
 					},
 					map[string]any{
 						"name": "version",
-						"short": "Current version number",
+						"title": "Version",
 						"type": "`$STRING`",
+						"short": "Current version number",
 					},
 				},
 				"id": map[string]any{
@@ -176,35 +191,9 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": "284882215",
-											"kind": "param",
-											"name": "id",
-											"orig": "app_id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"example": "us",
-											"kind": "query",
-											"name": "country",
-											"orig": "country",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/app/{appId}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"appId": "id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "api",
@@ -216,20 +205,46 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"country",
-										"id",
+								"parts": []any{
+									"api",
+									"app",
+									"{id}",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"appId": "id",
 									},
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"api",
-									"app",
-									"{id}",
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "app_id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+											"example": "284882215",
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "country",
+											"orig": "country",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "us",
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"country",
+										"id",
+									},
 								},
 							},
 						},

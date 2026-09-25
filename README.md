@@ -106,11 +106,11 @@ local result, err = client:App():load({ id = "test01" })
 | Language | Package | Install |
 | --- | --- | --- |
 | TypeScript | `@voxgig-sdk/app-store-metadata-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/app-store-metadata-sdk/tags) |
-| Python | `voxgig-sdk-app-store-metadata` | publish pending — [install from git tag](https://github.com/voxgig-sdk/app-store-metadata-sdk/tags) |
-| PHP | `voxgig-sdk/app-store-metadata` | publish pending — [install from git tag](https://github.com/voxgig-sdk/app-store-metadata-sdk/tags) |
+| Python | `voxgig-sdk-app-store-metadata-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/app-store-metadata-sdk/tags) |
+| PHP | `voxgig-sdk/app-store-metadata-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/app-store-metadata-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/app-store-metadata-sdk/go` | `go get github.com/voxgig-sdk/app-store-metadata-sdk/go@latest` |
-| Ruby | `voxgig-sdk-app-store-metadata` | publish pending — [install from git tag](https://github.com/voxgig-sdk/app-store-metadata-sdk/tags) |
-| Lua | `voxgig-sdk-app-store-metadata` | publish pending — [install from git tag](https://github.com/voxgig-sdk/app-store-metadata-sdk/tags) |
+| Ruby | `voxgig-sdk-app-store-metadata-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/app-store-metadata-sdk/tags) |
+| Lua | `voxgig-sdk-app-store-metadata-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/app-store-metadata-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/app-store-metadata-sdk/go-cli` | `go install github.com/voxgig-sdk/app-store-metadata-sdk/go-cli/cmd/app-store-metadata@latest` |
 | Go MCP server | `github.com/voxgig-sdk/app-store-metadata-sdk/go-mcp` | `go get github.com/voxgig-sdk/app-store-metadata-sdk/go-mcp@latest` |
 
@@ -340,10 +340,10 @@ forking the SDK.
 
 | Feature | Purpose |
 | --- | --- |
-| **RatelimitFeature** | Client-side rate limiting via a token bucket |
-| **RetryFeature** | Automatic retry of transient failures with exponential backoff |
-| **TestFeature** | In-memory mock transport for testing without a live server |
-| **TimeoutFeature** | Per-request timeout with transport abort |
+| **RatelimitFeature** | Rate limiting |
+| **RetryFeature** | Retry |
+| **TestFeature** | Test transport |
+| **TimeoutFeature** | Timeout |
 
 Pass custom features via the `extend` option at construction time.
 

@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 AppStoreMetadataUtility.registrar = ->(u) {
   u.clean = AppStoreMetadataUtilities::Clean
+  u.clean_add = AppStoreMetadataUtilities::CleanAdd
+  u.clean_explain = AppStoreMetadataUtilities::CleanExplain
   u.done = AppStoreMetadataUtilities::Done
   u.make_error = AppStoreMetadataUtilities::MakeError
   u.feature_add = AppStoreMetadataUtilities::FeatureAdd

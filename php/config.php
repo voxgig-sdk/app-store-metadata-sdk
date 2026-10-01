@@ -245,7 +245,7 @@ class AppStoreMetadataConfig
                     'params' => [
                       [
                         'name' => 'id',
-                        'orig' => 'app_id',
+                        'orig' => 'appId',
                         'type' => '`$STRING`',
                         'kind' => 'param',
                         'reqd' => true,

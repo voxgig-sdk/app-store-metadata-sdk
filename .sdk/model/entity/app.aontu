@@ -134,7 +134,7 @@ main: kit: entity: app: {
                 ex: "284882215"
                 k: "param"
                 n: "id"
-                or: "app_id"
+                or: "appId"
                 r: true
                 t: "`$STRING`"
               }

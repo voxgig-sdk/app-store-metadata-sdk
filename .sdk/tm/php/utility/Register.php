@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 AppStoreMetadataUtility::setRegistrar(function (AppStoreMetadataUtility $u): void {
     $u->clean = [AppStoreMetadataClean::class, 'call'];
+    $u->clean_add = [AppStoreMetadataClean::class, 'add'];
+    $u->clean_explain = [AppStoreMetadataDone::class, 'clean_explain'];
     $u->done = [AppStoreMetadataDone::class, 'call'];
     $u->make_error = [AppStoreMetadataMakeError::class, 'call'];
     $u->feature_add = [AppStoreMetadataFeatureAdd::class, 'call'];

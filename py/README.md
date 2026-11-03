@@ -15,7 +15,7 @@ keeps the cognitive load low.
 
 ## Install
 This package is not yet published to PyPI. Install it from the GitHub
-release tag (`py/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/app-store-metadata-sdk/releases)) or
+release tag (`py/vX.Y.Z`, see [Tags](https://github.com/voxgig-sdk/app-store-metadata-sdk/tags)) or
 from a source checkout:
 
 ```bash
@@ -43,7 +43,7 @@ client = AppStoreMetadataSDK()
 ```python
 try:
     app = client.App().load({"id": "example_id"})
-    print(app)
+    print(app.data_get())
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -56,7 +56,7 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 ```python
 try:
     app = client.App().load({"id": "example_id"})
-    print(app)
+    print(app.data_get())
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -122,10 +122,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = AppStoreMetadataSDK.test()
 
-# Entity ops return the ENTITY and raises on error;
-# call data_get() for the record.
+# Entity ops return the entity, and list one per record; they raise on error.
 app = client.App().load({"id": "test01"})
-# app contains the mock response record
+# data_get() on an entity reads its mock response record
 ```
 
 ### Use a custom fetch function
@@ -209,7 +208,7 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
+| `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria, and return it. Raises on error. |
 | `data_get` | `() -> dict` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> dict` | Get entity match criteria. |
@@ -219,9 +218,9 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
-ops, a `list` for `list`) and raise on error. Wrap calls in
-`try`/`except` to handle failures.
+Entity operations return the entity, and `list` a `list` of entities, one
+per record; an entity's `data_get()` reads its record (a `dict`). They raise
+on error, so wrap calls in `try`/`except` to handle failures.
 
 The `direct()` escape hatch never raises — it returns a result `dict`
 you branch on via `result["ok"]`:
@@ -249,7 +248,6 @@ On error, `ok` is `False` and `err` contains the error value.
 | `description` | Full app description |
 | `developer` | Developer or publisher name |
 | `iconUrl` | URL to app icon image |
-| `id` |  |
 | `price` | App price in local currency |
 | `rating` |  |
 | `releaseDate` | Release date of current version |
@@ -288,7 +286,6 @@ Create an instance: `app = client.App()`
 | `description` | `str` | Full app description |
 | `developer` | `str` | Developer or publisher name |
 | `iconUrl` | `str` | URL to app icon image |
-| `id` | `str` |  |
 | `price` | `float` | App price in local currency |
 | `rating` | `dict` |  |
 | `releaseDate` | `str` | Release date of current version |

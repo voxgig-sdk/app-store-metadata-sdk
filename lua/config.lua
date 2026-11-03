@@ -67,6 +67,7 @@ local function make_config()
         },
         ["optspec"] = {
           ["clearTimer"] = "`$FUNCTION`",
+          ["now"] = "`$FUNCTION`",
           ["setTimer"] = "`$FUNCTION`",
         },
         ["strict"] = false,
@@ -135,11 +136,6 @@ local function make_config()
             ["format"] = "uri",
           },
           {
-            ["name"] = "id",
-            ["title"] = "Id",
-            ["type"] = "`$STRING`",
-          },
-          {
             ["name"] = "price",
             ["title"] = "Price",
             ["type"] = "`$NUMBER`",
@@ -177,7 +173,7 @@ local function make_config()
           },
         },
         ["id"] = {
-          ["field"] = "id",
+          ["field"] = "appId",
           ["name"] = "id",
         },
         ["name"] = "app",
@@ -238,9 +234,15 @@ local function make_config()
                 },
                 ["select"] = {
                   ["exist"] = {
-                    "country",
                     "id",
                   },
+                },
+                ["response"] = {
+                  ["kind"] = "json",
+                  ["media"] = "application/json",
+                },
+                ["alias"] = {
+                  ["id"] = "appId",
                 },
               },
             },

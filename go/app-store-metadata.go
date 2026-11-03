@@ -13,7 +13,12 @@ type Context = core.Context
 type Utility = core.Utility
 type Feature = core.Feature
 type Entity = core.Entity
-type AppStoreMetadataEntity = core.AppStoreMetadataEntity
+type AppStoreMetadataEntityBase = core.AppStoreMetadataEntityBase
+
+// Deprecated: use AppStoreMetadataEntityBase.
+type AppStoreMetadataEntity = core.AppStoreMetadataEntityBase
+
+type StreamItem = core.StreamItem
 type FetcherFunc = core.FetcherFunc
 type Spec = core.Spec
 type Result = core.Result
@@ -41,7 +46,7 @@ func init() {
 	core.NewTimeoutFeatureFunc = func() core.Feature {
 		return feature.NewTimeoutFeature()
 	}
-	core.NewAppEntityFunc = func(client *core.AppStoreMetadataSDK, entopts map[string]any) core.AppStoreMetadataEntity {
+	core.NewAppEntityFunc = func(client *core.AppStoreMetadataSDK, entopts map[string]any) core.AppStoreMetadataEntityBase {
 		return entity.NewAppEntity(client, entopts)
 	}
 }

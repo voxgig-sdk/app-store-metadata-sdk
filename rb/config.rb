@@ -79,6 +79,7 @@ module AppStoreMetadataConfig
           },
           "optspec" => {
             "clearTimer" => "`$FUNCTION`",
+            "now" => "`$FUNCTION`",
             "setTimer" => "`$FUNCTION`",
           },
           "strict" => false,
@@ -147,11 +148,6 @@ module AppStoreMetadataConfig
               "format" => "uri",
             },
             {
-              "name" => "id",
-              "title" => "Id",
-              "type" => "`$STRING`",
-            },
-            {
               "name" => "price",
               "title" => "Price",
               "type" => "`$NUMBER`",
@@ -189,7 +185,7 @@ module AppStoreMetadataConfig
             },
           ],
           "id" => {
-            "field" => "id",
+            "field" => "appId",
             "name" => "id",
           },
           "name" => "app",
@@ -250,9 +246,15 @@ module AppStoreMetadataConfig
                   },
                   "select" => {
                     "exist" => [
-                      "country",
                       "id",
                     ],
+                  },
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
+                  },
+                  "alias" => {
+                    "id" => "appId",
                   },
                 },
               ],

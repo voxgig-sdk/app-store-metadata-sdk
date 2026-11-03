@@ -98,7 +98,6 @@ local app = client:App(nil)
 | `description` | `string` | No | Full app description |
 | `developer` | `string` | No | Developer or publisher name |
 | `iconUrl` | `string` | No | URL to app icon image |
-| `id` | `string` | No |  |
 | `price` | `number` | No | App price in local currency |
 | `rating` | `table` | No |  |
 | `releaseDate` | `string` | No | Release date of current version |
@@ -110,7 +109,7 @@ local app = client:App(nil)
 
 #### `load(reqmatch, ctrl) -> any, err`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
 local result, err = client:App():load({ id = "app_id" })
@@ -303,6 +302,7 @@ Timeout.
 | Option | Type |
 |---|---|
 | `clearTimer` | function |
+| `now` | function |
 | `setTimer` | function |
 
 These take no default: the feature behaves one way when you supply them and

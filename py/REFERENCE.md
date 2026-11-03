@@ -95,7 +95,6 @@ app = client.App()
 | `description` | `str` | No | Full app description |
 | `developer` | `str` | No | Developer or publisher name |
 | `iconUrl` | `str` | No | URL to app icon image |
-| `id` | `str` | No |  |
 | `price` | `float` | No | App price in local currency |
 | `rating` | `dict` | No |  |
 | `releaseDate` | `str` | No | Release date of current version |
@@ -105,9 +104,9 @@ app = client.App()
 
 ### Operations
 
-#### `load(reqmatch, ctrl=None) -> dict`
+#### `load(reqmatch, ctrl=None) -> AppEntity`
 
-Load a single entity matching the given criteria. Returns the entity data and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
 result = client.App().load({"id": "app_id"})
@@ -299,6 +298,7 @@ Timeout.
 | Option | Type |
 |---|---|
 | `clearTimer` | function |
+| `now` | function |
 | `setTimer` | function |
 
 These take no default: the feature behaves one way when you supply them and

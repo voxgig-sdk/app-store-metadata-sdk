@@ -25,8 +25,18 @@ const PLAN = [
             "country": "us"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "country"
+        ],
+        "queryArgs": [
+            {
+                "name": "country",
+                "wire": "country"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -61,7 +71,7 @@ const PLAN = [
                 }
             ]
         },
-        "idField": "id"
+        "idField": "appId"
     }
 ];
 (0, node_test_1.describe)('definition', () => {

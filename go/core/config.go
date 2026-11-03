@@ -71,6 +71,7 @@ func MakeConfig() map[string]any {
 				},
 				"optspec": map[string]any{
 					"clearTimer": "`$FUNCTION`",
+					"now": "`$FUNCTION`",
 					"setTimer": "`$FUNCTION`",
 				},
 				"strict": false,
@@ -139,11 +140,6 @@ func MakeConfig() map[string]any {
 						"format": "uri",
 					},
 					map[string]any{
-						"name": "id",
-						"title": "Id",
-						"type": "`$STRING`",
-					},
-					map[string]any{
 						"name": "price",
 						"title": "Price",
 						"type": "`$NUMBER`",
@@ -181,7 +177,7 @@ func MakeConfig() map[string]any {
 					},
 				},
 				"id": map[string]any{
-					"field": "id",
+					"field": "appId",
 					"name": "id",
 				},
 				"name": "app",
@@ -242,9 +238,15 @@ func MakeConfig() map[string]any {
 								},
 								"select": map[string]any{
 									"exist": []any{
-										"country",
 										"id",
 									},
+								},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
+								},
+								"alias": map[string]any{
+									"id": "appId",
 								},
 							},
 						},

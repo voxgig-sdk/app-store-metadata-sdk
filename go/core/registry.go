@@ -12,5 +12,5 @@ var NewTestFeatureFunc func() Feature
 
 var NewTimeoutFeatureFunc func() Feature
 
-var NewAppEntityFunc func(client *AppStoreMetadataSDK, entopts map[string]any) AppStoreMetadataEntity
+var NewAppEntityFunc func(client *AppStoreMetadataSDK, entopts map[string]any) AppStoreMetadataEntityBase
 

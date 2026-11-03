@@ -23,7 +23,6 @@ class App
     public ?string $description = null;
     public ?string $developer = null;
     public ?string $iconUrl = null;
-    public ?string $id = null;
     public ?float $price = null;
     public ?array $rating = null;
     public ?string $releaseDate = null;

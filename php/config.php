@@ -93,6 +93,7 @@ class AppStoreMetadataConfig
           ],
           'optspec' => [
             'clearTimer' => '`$FUNCTION`',
+            'now' => '`$FUNCTION`',
             'setTimer' => '`$FUNCTION`',
           ],
           'strict' => false,
@@ -161,11 +162,6 @@ class AppStoreMetadataConfig
               'format' => 'uri',
             ],
             [
-              'name' => 'id',
-              'title' => 'Id',
-              'type' => '`$STRING`',
-            ],
-            [
               'name' => 'price',
               'title' => 'Price',
               'type' => '`$NUMBER`',
@@ -203,7 +199,7 @@ class AppStoreMetadataConfig
             ],
           ],
           'id' => [
-            'field' => 'id',
+            'field' => 'appId',
             'name' => 'id',
           ],
           'name' => 'app',
@@ -264,9 +260,15 @@ class AppStoreMetadataConfig
                   ],
                   'select' => [
                     'exist' => [
-                      'country',
                       'id',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
+                  ],
+                  'alias' => [
+                    'id' => 'appId',
                   ],
                 ],
               ],

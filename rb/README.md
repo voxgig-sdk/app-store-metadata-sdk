@@ -12,7 +12,7 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `c
 
 ## Install
 This package is not yet published to RubyGems. Install it from the
-GitHub release tag (`rb/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/app-store-metadata-sdk/releases)), or
+GitHub release tag (`rb/vX.Y.Z`, see [Tags](https://github.com/voxgig-sdk/app-store-metadata-sdk/tags)), or
 from a clone:
 
 ```bash
@@ -45,7 +45,7 @@ client = AppStoreMetadataSDK.new
 begin
   # load returns the ENTITY — call data_get for the App record (raises on error).
   app = client.App.load({ "id" => "example_id" })
-  puts app
+  puts app.data_get
 rescue => err
   warn "load failed: #{err}"
 end
@@ -130,9 +130,9 @@ client = AppStoreMetadataSDK.test({
 })
 
 # Entity ops return the ENTITY (raises on error);
-# call data_get for the mock record.
+# data_get reads its mock record.
 app = client.App.load({ "id" => "test01" })
-puts app
+puts app.data_get
 ```
 
 ### Use a custom fetch function
@@ -216,7 +216,7 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
+| `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria, and return it. Raises on error. |
 | `data_get` | `() -> Hash` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> Hash` | Get entity match criteria. |
@@ -226,9 +226,10 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the result data directly. On failure they
-raise a `AppStoreMetadataError` (a `StandardError` subclass), so wrap
-calls in `begin`/`rescue` where you need to handle errors.
+Entity operations return the entity, and `list` an `Array` of entities, one
+per record; an entity's `data_get` reads its record. On failure they raise a
+`AppStoreMetadataError` (a `StandardError` subclass), so wrap calls in
+`begin`/`rescue` where you need to handle errors.
 
 The `direct` escape hatch is the exception: it never raises and instead
 returns a result `Hash` with these keys:
@@ -255,7 +256,6 @@ returns a result `Hash` with these keys:
 | `description` | Full app description |
 | `developer` | Developer or publisher name |
 | `iconUrl` | URL to app icon image |
-| `id` |  |
 | `price` | App price in local currency |
 | `rating` |  |
 | `releaseDate` | Release date of current version |
@@ -294,7 +294,6 @@ Create an instance: `app = client.App`
 | `description` | `String` | Full app description |
 | `developer` | `String` | Developer or publisher name |
 | `iconUrl` | `String` | URL to app icon image |
-| `id` | `String` |  |
 | `price` | `Float` | App price in local currency |
 | `rating` | `Hash` |  |
 | `releaseDate` | `String` | Release date of current version |

@@ -101,7 +101,6 @@ app = client.App
 | `description` | `String` | No | Full app description |
 | `developer` | `String` | No | Developer or publisher name |
 | `iconUrl` | `String` | No | URL to app icon image |
-| `id` | `String` | No |  |
 | `price` | `Float` | No | App price in local currency |
 | `rating` | `Hash` | No |  |
 | `releaseDate` | `String` | No | Release date of current version |
@@ -113,7 +112,7 @@ app = client.App
 
 #### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
 result = client.App.load({ "id" => "app_id" })
@@ -306,6 +305,7 @@ Timeout.
 | Option | Type |
 |---|---|
 | `clearTimer` | function |
+| `now` | function |
 | `setTimer` | function |
 
 These take no default: the feature behaves one way when you supply them and

@@ -96,6 +96,7 @@ def make_config():
         },
         "optspec": {
           "clearTimer": "`$FUNCTION`",
+          "now": "`$FUNCTION`",
           "setTimer": "`$FUNCTION`",
         },
         "strict": False,
@@ -164,11 +165,6 @@ def make_config():
             "format": "uri",
           },
           {
-            "name": "id",
-            "title": "Id",
-            "type": "`$STRING`",
-          },
-          {
             "name": "price",
             "title": "Price",
             "type": "`$NUMBER`",
@@ -206,7 +202,7 @@ def make_config():
           },
         ],
         "id": {
-          "field": "id",
+          "field": "appId",
           "name": "id",
         },
         "name": "app",
@@ -267,9 +263,15 @@ def make_config():
                 },
                 "select": {
                   "exist": [
-                    "country",
                     "id",
                   ],
+                },
+                "response": {
+                  "kind": "json",
+                  "media": "application/json",
+                },
+                "alias": {
+                  "id": "appId",
                 },
               },
             ],

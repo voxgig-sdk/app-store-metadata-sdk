@@ -102,6 +102,7 @@ class Config {
       },
       "optspec": {
         "clearTimer": "`$FUNCTION`",
+        "now": "`$FUNCTION`",
         "setTimer": "`$FUNCTION`"
       },
       "strict": false,
@@ -180,11 +181,6 @@ class Config {
           "format": "uri"
         },
         {
-          "name": "id",
-          "title": "Id",
-          "type": "`$STRING`"
-        },
-        {
           "name": "price",
           "title": "Price",
           "type": "`$NUMBER`",
@@ -222,7 +218,7 @@ class Config {
         }
       ],
       "id": {
-        "field": "id",
+        "field": "appId",
         "name": "id"
       },
       "name": "app",
@@ -283,9 +279,15 @@ class Config {
               },
               "select": {
                 "exist": [
-                  "country",
                   "id"
                 ]
+              },
+              "response": {
+                "kind": "json",
+                "media": "application/json"
+              },
+              "alias": {
+                "id": "appId"
               }
             }
           ]

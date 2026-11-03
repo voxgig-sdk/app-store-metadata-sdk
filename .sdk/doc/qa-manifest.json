@@ -3,5 +3,17 @@
     "SUMMARY.md"
   ],
   "config": ".sdk/doc/qa/vale.ini",
-  "routes": {}
+  "routes": {},
+  "quoted": {
+    "SUMMARY.md": [
+      "App bundle identifier",
+      "Currency code",
+      "Name of the application",
+      "Primary app category",
+      "Production server",
+      "Successful response with app metadata",
+      "The App Store Metadata API provides reliable access to real-time metadata about iOS apps, including app details, ratings, and reviews. It eliminates the need for scraping by delivering stable endpoints for quick integration into applications and services.",
+      "Unique App Store identifier"
+    ]
+  }
 }

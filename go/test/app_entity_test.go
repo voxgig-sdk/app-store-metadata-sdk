@@ -15,6 +15,13 @@ import (
 	vs "github.com/voxgig-sdk/app-store-metadata-sdk/go/utility/struct"
 )
 
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const appEntityLiveStrict = true
+
+
 func TestAppEntity(t *testing.T) {
 	t.Run("instance", func(t *testing.T) {
 		testsdk := sdk.TestSDK(nil, nil)
@@ -24,7 +31,21 @@ func TestAppEntity(t *testing.T) {
 		}
 	})
 
-	t.Run("basic", func(t *testing.T) {
+	t.Run("validate", func(t *testing.T) {
+		if !fhHasFeature("validate") {
+			t.Skip("feature not present in this SDK: validate")
+		}
+		client := sdk.TestSDK(nil, map[string]any{
+			"feature": map[string]any{"validate": map[string]any{"active": true}},
+		})
+		_, err := client.App(nil).Load(map[string]any{"id": 1}, nil)
+		if sdkerr, ok := err.(*core.AppStoreMetadataError); !ok || "validate_failed" != sdkerr.Code {
+			t.Fatalf("expected validate_failed, got %v", err)
+		}
+	})
+
+	t.Run("basic", func(tt *testing.T) {
+		var t testing.TB = tt
 		setup := appBasicSetup(nil)
 		// Per-op sdk-test-control.json skip — basic test exercises a flow
 		// with multiple ops; skipping any op skips the whole flow.
@@ -41,13 +62,20 @@ func TestAppEntity(t *testing.T) {
 				return
 			}
 		}
-		// The basic flow consumes synthetic IDs from the fixture. In live mode
-		// without an *_ENTID env override, those IDs hit the live API and 4xx.
-		if setup.syntheticOnly {
-			t.Skip("live entity test uses synthetic IDs from fixture — set APP_STORE_METADATA_TEST_APP_ENTID JSON to run live")
-			return
+		if setup.live {
+			for _liveKey, _liveEx := range map[string]any{"app01": "284882215"} {
+				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
+					setup.idmap[_liveKey] = _liveEx
+				}
+			}
 		}
 		client := setup.client
+		_ = client
+		if setup.live {
+			liveExisting(t, appEntityLiveStrict, setup.data, "app", func() (any, error) {
+				return []any{map[string]any{"id": setup.idmap["app01"]}}, nil
+			})
+		}
 
 		// Bootstrap entity data from existing test data (no create step in flow).
 		appRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.app")))
@@ -62,7 +90,7 @@ func TestAppEntity(t *testing.T) {
 		// LOAD
 		appRef01Ent := client.App(nil)
 		appRef01MatchDt0 := map[string]any{
-			"id": appRef01Data["id"],
+			"id": appRef01Data["appId"],
 		}
 		appRef01DataDt0Loaded, err := appRef01Ent.Load(appRef01MatchDt0, nil)
 		if err != nil {
@@ -72,7 +100,7 @@ func TestAppEntity(t *testing.T) {
 		if appRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}
-		if appRef01DataDt0LoadResult["id"] != appRef01Data["id"] {
+		if appRef01DataDt0LoadResult["appId"] != appRef01Data["appId"] {
 			t.Fatal("expected load result id to match")
 		}
 
@@ -97,6 +125,12 @@ func appBasicSetup(extra map[string]any) *entityTestSetup {
 		panic("failed to parse app test data: " + err.Error())
 	}
 
+	for _, rec := range core.ToMapAny(vs.GetPath(entityData, "existing.app")) {
+		if recMap := core.ToMapAny(rec); recMap != nil && recMap["id"] != nil {
+			recMap["appId"] = recMap["id"]
+		}
+	}
+
 	options := map[string]any{}
 	options["entity"] = entityData["existing"]
 
@@ -113,9 +147,8 @@ func appBasicSetup(extra map[string]any) *entityTestSetup {
 		},
 	)
 
-	// Detect ENTID env override before envOverride consumes it. When live
-	// mode is on without a real override, the basic test runs against synthetic
-	// IDs from the fixture and 4xx's. Surface this so the test can skip.
+	// Whether *_ENTID supplied the idmap, read before envOverride consumes it:
+	// without it, the ids a live flow binds are the fixture's synthetic ones.
 	entidEnvRaw := os.Getenv("APP_STORE_METADATA_TEST_APP_ENTID")
 	idmapOverridden := entidEnvRaw != "" && strings.HasPrefix(strings.TrimSpace(entidEnvRaw), "{")
 

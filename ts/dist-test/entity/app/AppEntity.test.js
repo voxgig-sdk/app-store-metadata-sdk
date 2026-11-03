@@ -54,6 +54,14 @@ const utility_1 = require("../../utility");
         const ent = testsdk.App();
         (0, node_assert_1.default)(null != ent);
     });
+    (0, node_test_1.test)('validate', async (t) => {
+        if (null == __1.config.feature?.validate) {
+            t.skip('feature not present in this SDK: validate');
+            return;
+        }
+        const client = __1.AppStoreMetadataSDK.test(undefined, { feature: { validate: { active: true } } });
+        await node_assert_1.default.rejects(client.App().load({ "id": 1 }), (err) => 'validate_failed' === err.code);
+    });
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.APP_STORE_METADATA_TEST_LIVE;
         for (const op of ['load']) {
@@ -62,7 +70,7 @@ const utility_1 = require("../../utility");
         }
         const setup = basicSetup();
         if (setup.live) {
-            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "appId": { "a": true, "h": "App Id", "n": "appId", "r": false, "sh": "Unique App Store identifier", "t": "`$STRING`", "key$": "appId", "index$": 0 }, "appName": { "a": true, "h": "App Name", "n": "appName", "r": false, "sh": "Name of the application", "t": "`$STRING`", "key$": "appName", "index$": 1 }, "bundleId": { "a": true, "h": "Bundle Id", "n": "bundleId", "r": false, "sh": "App bundle identifier", "t": "`$STRING`", "key$": "bundleId", "index$": 2 }, "category": { "a": true, "h": "Category", "n": "category", "r": false, "sh": "Primary app category", "t": "`$STRING`", "key$": "category", "index$": 3 }, "currency": { "a": true, "h": "Currency", "n": "currency", "r": false, "sh": "Currency code", "t": "`$STRING`", "key$": "currency", "index$": 4 }, "description": { "a": true, "h": "Description", "n": "description", "r": false, "sh": "Full app description", "t": "`$STRING`", "key$": "description", "index$": 5 }, "developer": { "a": true, "h": "Developer", "n": "developer", "r": false, "sh": "Developer or publisher name", "t": "`$STRING`", "key$": "developer", "index$": 6 }, "iconUrl": { "a": true, "fo": "uri", "h": "Icon Url", "n": "iconUrl", "r": false, "sh": "URL to app icon image", "t": "`$STRING`", "key$": "iconUrl", "index$": 7 }, "id": { "a": true, "h": "Id", "n": "id", "r": false, "t": "`$STRING`", "key$": "id", "index$": 8 }, "price": { "a": true, "h": "Price", "n": "price", "r": false, "sh": "App price in local currency", "t": "`$NUMBER`", "key$": "price", "index$": 9 }, "rating": { "a": true, "h": "Rating", "n": "rating", "r": false, "t": "`$OBJECT`", "key$": "rating", "index$": 10 }, "releaseDate": { "a": true, "fo": "date-time", "h": "Release Date", "n": "releaseDate", "r": false, "sh": "Release date of current version", "t": "`$STRING`", "key$": "releaseDate", "index$": 11 }, "reviews": { "a": true, "h": "Reviews", "n": "reviews", "r": false, "sh": "Recent user reviews", "t": "`$ARRAY`", "key$": "reviews", "index$": 12 }, "screenshots": { "a": true, "h": "Screenshots", "n": "screenshots", "r": false, "sh": "Array of screenshot URLs", "t": "`$ARRAY`", "key$": "screenshots", "index$": 13 }, "version": { "a": true, "h": "Version", "n": "version", "r": false, "sh": "Current version number", "t": "`$STRING`", "key$": "version", "index$": 14 } }, "id": { "field": "id", "name": "id" }, "name": "app", "op": { "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /api/app/{appId}", "source": "openapi3", "version": 2 }, "g": { "params": [{ "a": true, "ex": "284882215", "k": "param", "n": "id", "or": "appId", "r": true, "t": "`$STRING`", "index$": 0 }], "query": [{ "a": true, "ex": "us", "k": "query", "n": "country", "or": "country", "r": false, "t": "`$STRING`", "index$": 0 }] }, "k": "http", "m": "GET", "o": "/api/app/{appId}", "q": { "exist": ["country", "id"] }, "r": { "param": { "appId": "id" } }, "s": [{ "lit": "api" }, { "lit": "app" }, { "var": "id" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "app", "name__orig": "app", "Name": "App", "name_": "app", "name-": "app", "NAME": "APP", "index$": 0 }, { "active": true, "entity": "app", "key$": "BasicAppFlow", "kind": "basic", "name": "BasicAppFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": { "ref": "app_ref01", "srcdatavar": "app_ref01_data", "suffix": "_dt0" }, "m": { "id": "app01" }, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-app_ref01" } }], "index$": 0 }] }, 'App', { "GET /api/app/{appId}": { "protocol": "http", "parameters": [{ "name": "appId", "in": "path", "description": "The unique App Store ID of the iOS application", "required": true, "schema": { "type": "string" }, "example": "284882215", "index$": 0 }, { "name": "country", "in": "query", "description": "Two-letter country code for App Store region (ISO 3166-1 alpha-2)", "required": false, "schema": { "type": "string", "default": "us" }, "example": "us", "index$": 1 }] } });
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "appId": { "a": true, "h": "App Id", "n": "appId", "r": false, "sh": "Unique App Store identifier", "t": "`$STRING`", "key$": "appId", "index$": 0 }, "appName": { "a": true, "h": "App Name", "n": "appName", "r": false, "sh": "Name of the application", "t": "`$STRING`", "key$": "appName", "index$": 1 }, "bundleId": { "a": true, "h": "Bundle Id", "n": "bundleId", "r": false, "sh": "App bundle identifier", "t": "`$STRING`", "key$": "bundleId", "index$": 2 }, "category": { "a": true, "h": "Category", "n": "category", "r": false, "sh": "Primary app category", "t": "`$STRING`", "key$": "category", "index$": 3 }, "currency": { "a": true, "h": "Currency", "n": "currency", "r": false, "sh": "Currency code", "t": "`$STRING`", "key$": "currency", "index$": 4 }, "description": { "a": true, "h": "Description", "n": "description", "r": false, "sh": "Full app description", "t": "`$STRING`", "key$": "description", "index$": 5 }, "developer": { "a": true, "h": "Developer", "n": "developer", "r": false, "sh": "Developer or publisher name", "t": "`$STRING`", "key$": "developer", "index$": 6 }, "iconUrl": { "a": true, "fo": "uri", "h": "Icon Url", "n": "iconUrl", "r": false, "sh": "URL to app icon image", "t": "`$STRING`", "key$": "iconUrl", "index$": 7 }, "price": { "a": true, "h": "Price", "n": "price", "r": false, "sh": "App price in local currency", "t": "`$NUMBER`", "key$": "price", "index$": 8 }, "rating": { "a": true, "h": "Rating", "n": "rating", "r": false, "t": "`$OBJECT`", "key$": "rating", "index$": 9 }, "releaseDate": { "a": true, "fo": "date-time", "h": "Release Date", "n": "releaseDate", "r": false, "sh": "Release date of current version", "t": "`$STRING`", "key$": "releaseDate", "index$": 10 }, "reviews": { "a": true, "h": "Reviews", "n": "reviews", "r": false, "sh": "Recent user reviews", "t": "`$ARRAY`", "key$": "reviews", "index$": 11 }, "screenshots": { "a": true, "h": "Screenshots", "n": "screenshots", "r": false, "sh": "Array of screenshot URLs", "t": "`$ARRAY`", "key$": "screenshots", "index$": 12 }, "version": { "a": true, "h": "Version", "n": "version", "r": false, "sh": "Current version number", "t": "`$STRING`", "key$": "version", "index$": 13 } }, "id": { "field": "appId", "name": "id" }, "name": "app", "op": { "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /api/app/{appId}", "source": "openapi3", "version": 2 }, "g": { "params": [{ "a": true, "ex": "284882215", "k": "param", "n": "id", "or": "appId", "r": true, "t": "`$STRING`", "index$": 0 }], "query": [{ "a": true, "ex": "us", "k": "query", "n": "country", "or": "country", "r": false, "t": "`$STRING`", "index$": 0 }] }, "k": "http", "m": "GET", "o": "/api/app/{appId}", "q": { "exist": ["id"] }, "r": { "param": { "appId": "id" } }, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "api" }, { "lit": "app" }, { "var": "id" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "app", "name__orig": "app", "Name": "App", "name_": "app", "name-": "app", "NAME": "APP", "index$": 0 }, { "active": true, "entity": "app", "key$": "BasicAppFlow", "kind": "basic", "name": "BasicAppFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": { "ref": "app_ref01", "srcdatavar": "app_ref01_data", "suffix": "_dt0" }, "m": { "id": "app01" }, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-app_ref01" } }], "index$": 0, "route": "GET /api/app/{appId}", "record": {} }] }, 'App', { "GET /api/app/{appId}": { "protocol": "http", "parameters": [{ "name": "appId", "in": "path", "description": "The unique App Store ID of the iOS application", "required": true, "schema": { "type": "string" }, "example": "284882215", "index$": 0 }, { "name": "country", "in": "query", "description": "Two-letter country code for App Store region (ISO 3166-1 alpha-2)", "required": false, "schema": { "type": "string", "default": "us" }, "example": "us", "index$": 1 }] } }, { strict: LIVE_STRICT, t });
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -72,11 +80,16 @@ const utility_1 = require("../../utility");
         // LOAD
         const app_ref01_ent = client.App();
         const app_ref01_match_dt0 = {};
-        app_ref01_match_dt0.id = app_ref01_data.id;
+        app_ref01_match_dt0.id = app_ref01_data.appId;
         const app_ref01_data_dt0 = (await app_ref01_ent.load(app_ref01_match_dt0)).data();
-        (0, node_assert_1.default)(app_ref01_data_dt0.id === app_ref01_data.id);
+        (0, node_assert_1.default)(app_ref01_data_dt0.appId === app_ref01_data.appId);
     });
 });
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true;
 function basicSetup(extra) {
     // TODO: fix test def options
     const options = {}; // null
@@ -86,6 +99,10 @@ function basicSetup(extra) {
     const entityDataSource = Fs.readFileSync(entityDataFile).toString('utf8');
     // TODO: need a xlang JSON parse utility in voxgig/struct with better error msgs
     const entityData = JSON.parse(entityDataSource);
+    for (const rec of Object.values(entityData.existing?.["app"] ?? {})) {
+        if (null != rec?.id)
+            rec.appId = rec.id;
+    }
     options.entity = entityData.existing;
     let client = __1.AppStoreMetadataSDK.test(options, extra);
     const struct = client.utility().struct;
